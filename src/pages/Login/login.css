@@ -1,0 +1,355 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(90deg, #71b7e6, #c9d6ff);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+    position: relative;
+    width: 900px;
+    height: 600px;
+    background: #fff;
+    border-radius: 30px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+    margin: 20px;
+    overflow: hidden;
+}
+
+.from-box {
+    position: absolute;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    color: #333;
+    text-align: center;
+    padding: 30px 40px;
+    z-index: 1;
+    transition: .6s ease-in-out 1.2s, visibility 0s 1s;
+}
+
+.container.active .from-box {
+    right: 50%;
+}
+
+.from-box.register {
+    visibility: hidden;
+}
+
+.container.active .from-box.register {
+    visibility: visible;
+    transition-delay: .6s;
+}
+
+form {
+    width: 100%;
+}
+
+.container h1 {
+    font-size: 30px;
+    margin-bottom: 6px;
+}
+
+.container h4 {
+    font-size: 13px;
+    color: #666;
+    margin-bottom: 10px;
+    font-weight: 400;
+}
+
+.input-box {
+    position: relative;
+    margin: 14px 0;
+}
+
+.input-box input {
+    width: 100%;
+    padding: 12px 45px 12px 18px;
+    background: #eee;
+    border-radius: 12px;
+    border: 1px solid transparent;
+    outline: none;
+    font-size: 14px;
+    color: #333;
+    font-weight: 500;
+    transition: border-color 0.2s, background-color 0.2s;
+}
+
+.input-box input:focus {
+    background: #f4f7fa;
+    border-color: #7494ec;
+}
+
+.input-box input::placeholder {
+    color: #888;
+    font-weight: 400;
+}
+
+.input-box i {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+    font-size: 18px;
+}
+
+.forgot-link {
+    margin: -6px 0 12px;
+    text-align: right;
+}
+
+.forgot-link a {
+    font-size: 12px;
+    color: #7494ec;
+    text-decoration: none;
+}
+
+.forgot-link a:hover {
+    text-decoration: underline;
+}
+
+.btn {
+    width: 100%;
+    height: 44px;
+    background: #7494ec;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    color: #fff;
+    font-weight: 600;
+    transition: background 0.3s, opacity 0.3s, transform 0.1s;
+}
+
+.btn:hover:not(:disabled) {
+    background: #5d7fd9;
+}
+
+.btn:active:not(:disabled) {
+    transform: scale(0.99);
+}
+
+.btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+/* Divisor O */
+.separator-or {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 12px 0 8px;
+    color: #888;
+    font-size: 13px;
+}
+
+.separator-or::before,
+.separator-or::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.separator-or span {
+    padding: 0 10px;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Contenedor del Botón de Google */
+.google-btn-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4px;
+    min-height: 44px;
+}
+
+/* Alertas y Mensajes de retroalimentación */
+.alert-box {
+    padding: 8px 12px;
+    margin: 8px 0;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 500;
+    text-align: left;
+    display: none;
+    align-items: center;
+    gap: 8px;
+    animation: fadeInAlert 0.3s ease;
+}
+
+.alert-box.show {
+    display: flex;
+}
+
+.alert-box.error {
+    background-color: #fee2e2;
+    color: #991b1b;
+    border: 1px solid #f87171;
+}
+
+.alert-box.success {
+    background-color: #dcfce7;
+    color: #166534;
+    border: 1px solid #86efac;
+}
+
+@keyframes fadeInAlert {
+    from {
+        opacity: 0;
+        transform: translateY(-6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.toggle-box {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.toggle-box::before {
+    content: '';
+    position: absolute;
+    left: -250%;
+    width: 300%;
+    height: 100%;
+    background: #7494ec;
+    border-radius: 150px;
+    z-index: 2;
+    transition: 1.8s ease-in-out;
+}
+
+.container.active .toggle-box::before {
+    left: 50%;
+}
+
+.toggle-panel {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 2;
+    transition: 0.5s ease-in-out;
+    padding: 0 24px;
+}
+
+.toggle-panel.toggle-left {
+    left: 0;
+    transition-delay: 1.2s;
+}
+
+.container.active .toggle-panel.toggle-left {
+    left: -50%;
+}
+
+.toggle-panel.toggle-right {
+    right: -50%;
+    transition-delay: 0.6s;
+}
+
+.container.active .toggle-panel.toggle-right {
+    right: 0;
+    transition-delay: 1.2s;
+}
+
+.toggle-panel h1 {
+    font-size: 28px;
+    margin-bottom: 12px;
+}
+
+.toggle-panel p {
+    font-size: 14px;
+    margin-bottom: 20px;
+    color: #f0f4ff;
+    line-height: 1.4;
+}
+
+.toggle-panel .btn {
+    width: 160px;
+    height: 46px;
+    background: transparent;
+    border: 2px solid #fff;
+    box-shadow: none;
+}
+
+.toggle-panel .btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+@media screen and (max-width: 650px) {
+    .container {
+        height: calc(100vh - 40px);
+    }
+
+    .from-box {
+        bottom: 0;
+        width: 100%;
+        height: 70%;
+        padding: 20px;
+    }
+
+    .container.active .from-box {
+        right: 0;
+        bottom: 30%;
+    }
+
+    .toggle-box::before {
+        left: 0;
+        top: -270%;
+        width: 100%;
+        height: 300%;
+    }
+
+    .container.active .toggle-box::before {
+        left: 0;
+        top: 70%;
+    }
+
+    .toggle-panel {
+        width: 100%;
+        height: 30%;
+    }
+
+    .toggle-panel.toggle-left {
+        top: 0;
+    }
+
+    .container.active .toggle-panel.toggle-left {
+        left: 0;
+        top: -30%;
+    }
+
+    .toggle-panel.toggle-right {
+        right: 0;
+        bottom: -30%;
+    }
+
+    .container.active .toggle-panel.toggle-right {
+        bottom: 0;
+    }
+}

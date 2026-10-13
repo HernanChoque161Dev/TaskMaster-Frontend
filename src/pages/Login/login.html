@@ -4,80 +4,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TaskMaster</title>
+    <title>TaskMaster - Iniciar Sesión o Registrarse</title>
     <link rel="icon" type="image/x-icon" href="../../../public/favicon.ico">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="./login-style.css">
+
+    <!-- SDK Oficial de Google Identity Services -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+
+    <!-- Estilos globales -->
+    <link rel="stylesheet" href="../../shared/css/variables.css">
+    <link rel="stylesheet" href="../../shared/css/base.css">
+    <!-- Estilos locales de la página -->
+    <link rel="stylesheet" href="./login.css">
 </head>
 
 <body>
+    <!-- Configuración Global del SDK de Google Sign-In -->
+    <div id="g_id_onload" data-client_id="1023355026161-v8iv8epaa3hlooui5k44sqocje109sra.apps.googleusercontent.com"
+        data-callback="manejarRespuestaGoogle">
+    </div>
+
     <div class="container">
-        <!-- En tu archivo login.html -->
+        <!-- Caja del formulario de Inicio de Sesión -->
         <div class="from-box login">
-            <!-- Añadimos el ID "form-login" -->
-            <form id="form-login">
+            <form id="form-login" novalidate>
                 <h1>Iniciar Sesión</h1>
 
+                <!-- Mensaje de retroalimentación (error/éxito) -->
+                <div id="login-alert" class="alert-box"></div>
+
                 <div class="input-box">
-                    <!-- Cambiamos type="email" a type="text" y añadimos id="input-usuario" -->
-                    <input type="text" id="input-usuario" placeholder="Correo electronico" required>
+                    <input type="email" id="input-usuario" placeholder="Correo electrónico" required
+                        autocomplete="email">
                     <i class="bi bi-person-circle"></i>
                 </div>
 
                 <div class="input-box">
-                    <!-- Añadimos id="input-password" -->
-                    <input type="password" id="input-password" placeholder="Contraseña" required>
+                    <input type="password" id="input-password" placeholder="Contraseña" required
+                        autocomplete="current-password">
                     <i class="bi bi-lock-fill"></i>
                 </div>
+
                 <div class="forgot-link">
                     <a href="#">¿Olvidaste tu contraseña?</a>
                 </div>
-                <button type="submit" class="btn">Iniciar sesion</button>
-                <p>Ingresar con google</p>
+
+                <button type="submit" id="btn-login" class="btn">Iniciar sesión</button>
+
+                <!-- Separador y Botón Oficial de Google -->
+                <div class="separator-or">
+                    <span>o</span>
+                </div>
+
+                <div class="google-btn-wrapper">
+                    <div class="g_id_signin" data-type="standard" data-size="large" data-theme="outline"
+                        data-text="signin_with" data-shape="rectangular" data-logo_alignment="left" data-width="320">
+                    </div>
+                </div>
             </form>
         </div>
+
+        <!-- Caja del formulario de Registro -->
         <div class="from-box register">
-            <form action="">
+            <form id="form-register" novalidate>
                 <h1>Crear una cuenta</h1>
                 <h4>Comienza a organizar tu trabajo hoy</h4>
 
+                <!-- Mensaje de retroalimentación (error/éxito) -->
+                <div id="register-alert" class="alert-box"></div>
+
                 <div class="input-box">
-                    <input type="text" placeholder="Nombre completo" required>
+                    <input type="text" id="input-register-username" placeholder="Nombre de usuario" required
+                        autocomplete="username">
                     <i class="bi bi-person-circle"></i>
                 </div>
+
                 <div class="input-box">
-                    <input type="email" placeholder="Correo electronico" required>
+                    <input type="email" id="input-register-email" placeholder="Correo electrónico" required
+                        autocomplete="email">
                     <i class="bi bi-envelope"></i>
                 </div>
+
                 <div class="input-box">
-                    <input type="password" placeholder="Contraseña" required>
+                    <input type="password" id="input-register-password" placeholder="Contraseña" required
+                        autocomplete="new-password">
                     <i class="bi bi-lock-fill"></i>
                 </div>
 
-                <button type="submit" class="btn">Crear cuenta</button>
-                <p>Registrarse con google</p>
+                <button type="submit" id="btn-register" class="btn">Crear cuenta</button>
 
+                <!-- Separador y Botón Oficial de Google -->
+                <div class="separator-or">
+                    <span>o</span>
+                </div>
 
+                <div class="google-btn-wrapper">
+                    <div class="g_id_signin" data-type="standard" data-size="large" data-theme="outline"
+                        data-text="signup_with" data-shape="rectangular" data-logo_alignment="left" data-width="320">
+                    </div>
+                </div>
             </form>
-
         </div>
+
+        <!-- Panel de transición / Toggle -->
         <div class="toggle-box">
             <div class="toggle-panel toggle-left">
                 <h1>Bienvenido a TaskMaster</h1>
                 <p>¿No tienes una cuenta?</p>
-                <p>Registrate para comenzar a organizar tu trabajo</p>
-                <button class="btn resgister-btn">Registrarse</button>
+                <p>Regístrate para comenzar a organizar tu trabajo</p>
+                <button type="button" class="btn resgister-btn">Registrarse</button>
             </div>
             <div class="toggle-panel toggle-right">
-                <h1>Gestion eficiente de proyectos</h1>
-                <p>Unete a miles de equipos que simplificacion su flujo de trabajo , priorizan tareas y alcanzan sus
+                <h1>Gestión eficiente de proyectos</h1>
+                <p>Únete a miles de equipos que simplifican su flujo de trabajo, priorizan tareas y alcanzan sus
                     objetivos con TaskMaster</p>
-                <button class="btn login-btn">Iniciar sesión</button>
-
+                <button type="button" class="btn login-btn">Iniciar sesión</button>
             </div>
         </div>
     </div>
-    <script src="./login.js"></script>
+
+    <!-- Script de lógica de la página (con defer y type module para importar el servicio) -->
+    <script type="module" src="./login.js" defer></script>
 </body>
 
 </html>
