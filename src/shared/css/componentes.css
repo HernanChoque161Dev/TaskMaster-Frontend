@@ -1,0 +1,236 @@
+/*Aca esyan el estilo de las piezas que se repitene en todas las pantallas
+es decir los colores,bordes,radios,sombras usando(var())*/
+
+/*Logo y navegacion*/
+.logo-texto h1 {
+    font-size: 20px;
+    font-weight: var(--peso-bold);
+    color: var(--color-texto-principal);
+    
+}
+.Gestion.eficiente {
+    font-size: var(--texto-medio);
+    color: var(--color-texto-placeholder);
+}
+
+.nav-item {
+    display: block;
+    padding: var(--espacio-3) var(--espacio-4);
+    border-radius: var(--radio-botones);
+    font-size: var(--texto-secundario);
+    font-weight: var(--peso-medio);
+    color: var(--color-texto-principal);
+    transition: background-color 0.15s ease;
+}
+ .nav-item:hover {
+    background-color: var(--celesteClaro);
+}
+ 
+.nav-item.activo {
+    background-color: var(--celesteClaro);
+    color: var(--azul);
+    font-weight: var(--peso-semibold);
+}
+ 
+.ayuda {
+    font-size: var(--texto-secundario);
+    color: var(--color-texto-placeholder);
+    cursor: pointer;
+}
+/*Botones*/
+ .boton-agregar-tarea,
+.boton-accion {
+    background-color: var(--azul);
+    color: var(--color-texto-botones);
+    border: none;
+    border-radius: var(--radio-botones);
+    padding: var(--espacio-3) var(--espacio-5);
+    font-family: inherit;
+    font-size: var(--texto-secundario);
+    font-weight: var(--peso-semibold);
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+}
+ 
+.boton-agregar-tarea:hover,
+.boton-accion:hover {
+    background-color: var(--celesteOscuro);
+}
+ 
+.boton-ver-tareas {
+    background-color: transparent;
+    color: var(--azul);
+    border: 1px solid var(--color-bordes);
+    border-radius: var(--radio-botones);
+    padding: var(--espacio-3) var(--espacio-5);
+    font-family: inherit;
+    font-size: var(--texto-secundario);
+    font-weight: var(--peso-medio);
+    cursor: pointer;
+    transition: background-color 0.15s ease;
+}
+ 
+.boton-ver-tareas:hover {
+    background-color: var(--celesteClaro);
+}
+
+/*Barra superior*/
+.titulo-principal {
+    font-size: var(--texto-subtitulos);
+    font-weight: var(--peso-semibold);
+    color: var(--azul);
+}
+ 
+.buscar-caja input {
+    font-family: inherit;
+    font-size: var(--texto-secundario);
+    border: 1px solid var(--color-bordes);
+    border-radius: var(--radio-inputs);
+    padding: var(--espacio-2) var(--espacio-3);
+    background-color: var(--blanco);
+}
+ 
+.buscar-caja input::placeholder {
+    color: var(--color-texto-placeholder);
+}
+ 
+.icono-boton {
+    font-size: var(--texto-secundario);
+    color: var(--color-texto-placeholder);
+    cursor: pointer;
+}
+ 
+.icono-boton:hover {
+    color: var(--azul);
+}
+/*Tarjetas*/
+.tarjetas,
+.panel,
+.tarjeta-proyecto {
+    background-color: var(--color-superficies);
+    border-radius: var(--radio-tarjetas);
+    box-shadow: var(--sombra-tarjeta);
+    padding: var(--espacio-5);
+}
+ 
+.tarjeta-proyecto {
+    background-color: var(--blanco);
+    border: 1px solid var(--color-bordes);
+}
+ 
+/* ==== Tarjetas de estadísticas ==== */
+.etiqueta {
+    font-size: var(--texto-secundario);
+    color: var(--color-texto-placeholder);
+}
+ 
+.valor {
+    font-size: var(--texto-numeros);
+    font-weight: var(--peso-bold);
+    color: var(--color-texto-principal);
+}
+ 
+.extra {
+    font-size: var(--texto-pequeño);
+    color: var(--azul);
+}
+/*Panel*/
+.ver-todos {
+    font-size: var(--texto-secundario);
+    color: var(--azul);
+    text-decoration: none;
+}
+ 
+.ver-todos:hover {
+    text-decoration: underline;
+}
+/*Tarjeta de proyecto*/
+.proyecto-nombre {
+    font-size: var(--texto-base);
+    font-weight: var(--peso-semibold);
+}
+ 
+.proyecto-descripcion {
+    font-size: var(--texto-secundario);
+    color: var(--color-texto-placeholder);
+}
+ 
+.progreso {
+    font-size: var(--texto-pequeño);
+    color: var(--color-texto-placeholder);
+}
+ 
+.progreso-barra {
+    height: 8px;
+    background-color: var(--celesteClaro);
+    border-radius: 999px;
+    overflow: hidden;
+}
+ 
+.progreso-barra-porcentaje {
+    height: 100%;
+    background-color: var(--azul);
+    border-radius: 999px;
+}
+ 
+.avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background-color: var(--celesteMedio);
+    color: var(--blanco);
+    border: 2px solid var(--blanco);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--texto-pequeño);
+    font-weight: var(--peso-semibold);
+}
+ 
+.fecha {
+    font-size: var(--texto-pequeño);
+    color: var(--color-texto-placeholder);
+}
+
+/*Lista vencimientos*/
+.checkbox {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--azul);
+    margin-top: 2px;
+}
+ 
+.vencimiento-titulo {
+    font-size: var(--texto-secundario);
+    font-weight: var(--peso-medio);
+    color: var(--color-texto-principal);
+}
+ 
+.fecha-vencimiento {
+    font-size: var(--texto-pequeño);
+    color: var(--color-texto-placeholder);
+}
+/*Prioridades*/
+.prioridad {
+    display: inline-block;
+    font-size: var(--texto-pequeño);
+    font-weight: var(--peso-semibold);
+    padding: 2px var(--espacio-2);
+    border-radius: var(--radio-inputs);
+}
+ 
+.prioridad-alta {
+    color: var(--color-prioridad-alta);
+    background-color: var(--color-prioridad-alta-fondo);
+}
+ 
+.prioridad-media {
+    color: var(--color-prioridad-media);
+    background-color: var(--color-prioridad-media-fondo);
+}
+ 
+.prioridad-baja {
+    color: var(--color-prioridad-baja);
+    background-color: var(--color-prioridad-baja-fondo);
+}
+ 

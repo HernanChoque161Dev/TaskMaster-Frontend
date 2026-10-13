@@ -1,0 +1,65 @@
+/*ESTE ARCHIVO TIENE COSAS QUE SON COMPARTIDAS POR TODAS LAS PANTALLAS DE LA PAGINA*/
+:root{
+    /*--blanco:#fffefc;*/
+    --blanco:#f8f9fa;
+    --crema:#ddd4c3;
+    --crema2:#ece8d7;
+    --celesteClaro:#c0d6e9;
+    --celesteMedio:#98bedd;
+    --celesteOscuro:#70a0d0;
+    --azul: #5582ab;
+    --negro: #000;
+
+    /*Fondos*/
+    --color-fondo: var(--blanco); /*fondo general*/
+    --color-superficies: var(--crema2); /*tarjetas*/
+    --color-bordes: var(--azul);/*bordes*/
+
+    /*Texto*/
+    --color-texto-principal:var(--negro);
+    --color-texto-subtitulos: var(--azul);
+    --color-texto-placeholder:var(--celesteOscuro);
+    --color-texto-botones:var(--blanco);
+
+    /*Tipografia*/
+    --fuente-principal: "Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+    --texto-pequeño:0.75rem; /*etiquetas pequeñas*/
+    --texto-secundario:0.875rem; /*texto seg,nav*/
+    --texto-base:1rem; /*texto general*/
+    --texto-subtitulos:1.5rem; /*subtitulos*/
+    --texto-grande:1.75rem;/*saludo panel principal*/
+    --texto-numeros:1.85rem;/*numero grandes en las tarjetas*/
+
+    --peso-normal:400;
+    --peso-medio:500;
+    --peso-semibold:600;
+    --peso-bold:700;
+
+    /*Espaciado */
+    --espacio-1: 0.25rem;
+    --espacio-2:0.5rem;
+    --espacio-3:0.75rem;
+    --espacio-4:1rem;
+    --espacio-5:1.25rem;
+    --espacio-6:1.5rem;
+    --espacio-7:2rem;
+
+    /*Bordes y sombras*/
+    --radio-inputs:6px; /*inputs*/
+    --radio-botones:8px; /*botones*/
+    --radio-tarjetas:12px; /*tarjetas*/
+
+    --sombra-tarjeta:0 1px 3px rgba(0,0,0,0.1);
+    --sombra-modal:0 10px 25px rgba(0,0,0,0.15);
+
+    /*Ancho layout*/
+    --ancho-barralateral:260px;
+    
+     /*Prioridad de tareas (ALTA/MEDIA/BAJA en Panel Principal y Mis Tareas)*/
+    --color-prioridad-alta:#DC2626;
+    --color-prioridad-media:#D97706;
+    --color-prioridad-baja:#16A34A;
+ 
+
+}
+

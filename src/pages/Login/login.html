@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TaskMaster</title>
+    <link rel="icon" type="image/x-icon" href="../../../public/favicon.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="./login-style.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- En tu archivo login.html -->
+        <div class="from-box login">
+            <!-- Añadimos el ID "form-login" -->
+            <form id="form-login">
+                <h1>Iniciar Sesión</h1>
+
+                <div class="input-box">
+                    <!-- Cambiamos type="email" a type="text" y añadimos id="input-usuario" -->
+                    <input type="text" id="input-usuario" placeholder="Correo electronico" required>
+                    <i class="bi bi-person-circle"></i>
+                </div>
+
+                <div class="input-box">
+                    <!-- Añadimos id="input-password" -->
+                    <input type="password" id="input-password" placeholder="Contraseña" required>
+                    <i class="bi bi-lock-fill"></i>
+                </div>
+                <div class="forgot-link">
+                    <a href="#">¿Olvidaste tu contraseña?</a>
+                </div>
+                <button type="submit" class="btn">Iniciar sesion</button>
+                <p>Ingresar con google</p>
+            </form>
+        </div>
+        <div class="from-box register">
+            <form action="">
+                <h1>Crear una cuenta</h1>
+                <h4>Comienza a organizar tu trabajo hoy</h4>
+
+                <div class="input-box">
+                    <input type="text" placeholder="Nombre completo" required>
+                    <i class="bi bi-person-circle"></i>
+                </div>
+                <div class="input-box">
+                    <input type="email" placeholder="Correo electronico" required>
+                    <i class="bi bi-envelope"></i>
+                </div>
+                <div class="input-box">
+                    <input type="password" placeholder="Contraseña" required>
+                    <i class="bi bi-lock-fill"></i>
+                </div>
+
+                <button type="submit" class="btn">Crear cuenta</button>
+                <p>Registrarse con google</p>
+
+
+            </form>
+
+        </div>
+        <div class="toggle-box">
+            <div class="toggle-panel toggle-left">
+                <h1>Bienvenido a TaskMaster</h1>
+                <p>¿No tienes una cuenta?</p>
+                <p>Registrate para comenzar a organizar tu trabajo</p>
+                <button class="btn resgister-btn">Registrarse</button>
+            </div>
+            <div class="toggle-panel toggle-right">
+                <h1>Gestion eficiente de proyectos</h1>
+                <p>Unete a miles de equipos que simplificacion su flujo de trabajo , priorizan tareas y alcanzan sus
+                    objetivos con TaskMaster</p>
+                <button class="btn login-btn">Iniciar sesión</button>
+
+            </div>
+        </div>
+    </div>
+    <script src="./login.js"></script>
+</body>
+
+</html>

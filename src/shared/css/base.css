@@ -1,0 +1,61 @@
+
+*,*::before,*::after{
+    box-sizing: border-box;
+}
+
+body,h1,h2,h3,p{
+    margin : 0
+}
+
+ul{
+    list-style: none;
+    padding: 0;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+body{
+    
+    font-family: var(--fuente-principal);
+    color:var(--color-texto-principal);
+    background-color: var(--color-fondo);
+    font-size: var(--texto-base);
+}
+/*Tipografias*/
+h1{
+    font-size: 30px;
+    font-weight: var(--peso-bold);
+    display: inline;
+}
+
+
+h2{
+    font-size: var(--tamaño-subtitulos);
+    font-weight:var(--peso-bold)
+}
+
+h3{
+    font-size:var(--texto-base);
+    font-weight:var(--pesp-semibold);
+
+}
+a{
+    font-size:var(--texto-pequeño);
+    color: var(--azul);
+    text-decoration: none;
+}
+/*Elementos iteractivos*/
+button{
+
+    font-family: inherit;
+    cursor: pointer;
+    border: none;
+}
+/*Accesibbilidad*/
+:focus-visible{
+    outline: 2px solid var(--celesteOscuro);
+    outline-offset: 2px;
+}
