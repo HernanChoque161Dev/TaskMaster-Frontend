@@ -1,0 +1,66 @@
+/* TEMA OSCURO
+se activa cuando el html tiene data-tema="oscuro"
+Importante : Cragar despues de variables.css y componentes.css */
+
+
+:root[data-tema="oscuro"]{
+    color-scheme:dark;
+
+
+/*Fondos*/
+--color-fondo:#12181f;
+--color-superficies: #1c2631;
+--color-bordes: #2f4258;
+
+/*Texto secundario,botones,placeholder*/
+--color-texto-principal:var(--blanco);
+--color-texto-subtitulos: #8fb3d6;
+
+
+/*Bordes y sombras */
+--sombra-tarjeta: 0 1px 3px rgba(0, 0, 0, 0.5);
+--sombra-modal: 0 10px 25px rgba(0, 0, 0, 0.6);
+
+/*Prioridades*/
+ --color-prioridad-alta: #f87171;
+ --color-prioridad-alta-fondo: rgba(220, 38, 38, 0.18);
+ --color-prioridad-media: #fbbf24;
+--color-prioridad-media-fondo: rgba(217, 119, 6, 0.18);
+--color-prioridad-baja: #4ade80;
+--color-prioridad-baja-fondo: rgba(22, 163, 74, 0.18);
+}
+
+/*Componentes que usan la paleta cruda y por eso no cambian solos con las variables*/
+[data-tema="oscuro"] .tarjeta-proyecto {
+    background-color: var(--color-fondo);
+}
+ 
+[data-tema="oscuro"] .buscar-caja input {
+    background-color: var(--color-superficies);
+    color: var(--color-texto-principal);
+}
+ 
+[data-tema="oscuro"] .nav-item:hover,
+[data-tema="oscuro"] .nav-item.activo {
+    background-color: #243447;
+}
+ 
+[data-tema="oscuro"] .nav-item.activo {
+    color: var(--celesteMedio);
+}
+ 
+[data-tema="oscuro"] .boton-ver-tareas {
+    color: var(--celesteMedio);
+}
+ 
+[data-tema="oscuro"] .boton-ver-tareas:hover {
+    background-color: #243447;
+}
+ 
+[data-tema="oscuro"] .progreso-barra {
+    background-color: var(--color-bordes);
+}
+ 
+[data-tema="oscuro"] .avatar {
+    border-color: var(--color-superficies);
+}

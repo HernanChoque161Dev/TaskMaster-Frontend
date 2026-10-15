@@ -1,17 +1,18 @@
-/*Aca esyan el estilo de las piezas que se repitene en todas las pantallas
+/*Aca estan el estilo de las piezas que se repitene en todas las pantallas
 es decir los colores,bordes,radios,sombras usando(var())*/
 
 /*Logo y navegacion*/
-.logo-texto h1 {
+.logo-texto {
     font-size: 20px;
     font-weight: var(--peso-bold);
     color: var(--color-texto-principal);
     
 }
-.Gestion.eficiente {
+.gestion.eficiente {
     font-size: var(--texto-medio);
     color: var(--color-texto-placeholder);
 }
+
 
 .nav-item {
     display: block;
@@ -95,13 +96,132 @@ es decir los colores,bordes,radios,sombras usando(var())*/
 }
  
 .icono-boton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border: 1px solid var(--color-bordes);
+    border-radius: 50%;
+    background-color: var(--color-superficies);
     font-size: var(--texto-secundario);
     color: var(--color-texto-placeholder);
     cursor: pointer;
+    position: relative;
+    transition: border-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
 }
  
 .icono-boton:hover {
     color: var(--azul);
+    border-color: var(--celesteMedio);
+    box-shadow: var(--sombra-modal);
+}
+
+.icono-boton svg {
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+.menu-desplegable {
+    position: relative;
+}
+
+.desplegable {
+    position: absolute;
+    right: 0;
+    top: calc(100% + 0.75rem);
+    min-width: 18rem;
+    background-color: var(--color-superficies);
+    border: 1px solid var(--color-bordes);
+    border-radius: var(--radio-tarjetas);
+    box-shadow: var(--sombra-modal);
+    z-index: 30;
+    overflow: hidden;
+}
+
+.desplegable[hidden] {
+    display: none;
+}
+
+.desplegable-titulo,
+.desplegable-cabecera {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--espacio-2);
+    padding: var(--espacio-3) var(--espacio-4);
+    font-size: var(--texto-secundario);
+    color: var(--color-texto-principal);
+}
+
+.desplegable-cabecera {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.desplegable-cabecera span {
+    color: var(--color-texto-placeholder);
+    font-size: var(--texto-pequeño);
+}
+
+.desplegable-titulo a,
+.desplegable-item {
+    color: var(--azul);
+    text-decoration: none;
+    font-size: var(--texto-secundario);
+}
+
+.desplegable-notificaciones {
+    min-width: 22rem;
+}
+
+.notificacion {
+    display: block;
+    padding: var(--espacio-3) var(--espacio-4);
+    border-top: 1px solid var(--color-bordes);
+    color: var(--color-texto-principal);
+    text-decoration: none;
+}
+
+.notificacion:hover,
+.desplegable-item:hover {
+    background-color: var(--celesteClaro);
+}
+
+.notificacion span,
+.notificacion small {
+    display: block;
+}
+
+.notificacion small {
+    margin-top: 0.25rem;
+    color: var(--color-texto-placeholder);
+}
+
+.notificacion.no-leida {
+    background-color: rgba(41, 98, 255, 0.04);
+}
+
+.desplegable-item {
+    display: block;
+    padding: var(--espacio-3) var(--espacio-4);
+    border-top: 1px solid var(--color-bordes);
+}
+
+.desplegable-pie {
+    text-align: center;
+    font-weight: var(--peso-semibold);
+}
+
+.punto-notif {
+    position: absolute;
+    top: 0.45rem;
+    right: 0.45rem;
+    width: 0.55rem;
+    height: 0.55rem;
+    background-color: #ff4d4f;
+    border: 2px solid var(--color-superficies);
+    border-radius: 50%;
 }
 /*Tarjetas*/
 .tarjetas,
