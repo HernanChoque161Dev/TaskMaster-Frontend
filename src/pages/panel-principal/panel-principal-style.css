@@ -1,5 +1,49 @@
 /* Aca estan los ajustes que solo aplican a la pantalla de PANEL PRINCIPAL*/
 
+.boton-tema-flotante {
+    position: fixed;
+    right: var(--espacio-6);
+    bottom: var(--espacio-6);
+    z-index: 20;
+    display: grid;
+    width: 3.5rem;
+    height: 3.5rem;
+    place-items: center;
+    border-radius: 50%;
+    background-color: var(--azul);
+    color: var(--color-texto-botones);
+    box-shadow: var(--sombra-modal);
+    cursor: pointer;
+    transition: background-color 0.15s ease, transform 0.15s ease;
+}
+
+.boton-tema-flotante:hover {
+    background-color: var(--celesteOscuro);
+    transform: translateY(-2px);
+}
+
+.boton-tema-flotante:focus-within {
+    outline: 3px solid var(--celesteMedio);
+    outline-offset: 3px;
+}
+
+.boton-tema-flotante input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+}
+
+.icono-tema::before {
+    content: "☾";
+    font-size: 1.75rem;
+    line-height: 1;
+}
+
+.boton-tema-flotante input:checked + .icono-tema::before {
+    content: "☀";
+}
+
 .encabezado-panel .boton-accion{
     width: auto;
     flex-shrink: 0;
@@ -19,3 +63,106 @@
     box-shadow: var(--sombra-modal);
     transform: translateY(-2px);
 }
+.completada {
+  text-decoration: line-through;
+  color: #999;
+}
+/* Cabecera de la tarjeta de proyecto */
+.proyecto-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+/* Menú de tres puntos */
+.menu-proyecto {
+    position: relative;
+}
+
+.boton-menu {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    line-height: 1;
+}
+
+.menu-opciones {
+    display: none;
+    position: absolute;
+    right: 0;
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    box-shadow: var(--sombra-modal);
+    z-index: 10;
+}
+
+.menu-opciones.abierto {
+    display: block;
+}
+
+.menu-opciones button {
+    display: block;
+    width: 100%;
+    padding: 8px 16px;
+    background: none;
+    border: none;
+    text-align: left;
+    cursor: pointer;
+}
+
+.menu-opciones button:hover {
+    background-color: #f3f4f6;
+}
+
+/*Notificaciones y Perfil */
+.desplegable-notificaciones { width: 340px; }
+
+.desplegable-titulo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--espacio-3);
+    color: var(--color-texto-principal);
+}
+
+.desplegable-titulo a {
+    font-size: var(--texto-pequeño);
+    color: var(--color-texto-subtitulos);
+}
+
+.notificacion {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espacio-1);
+    padding: var(--espacio-3) var(--espacio-3) var(--espacio-3) var(--espacio-6);
+    position: relative;
+    border-radius: var(--radio-botones);
+    color: var(--color-texto-principal);
+    text-decoration: none;
+    font-size: var(--texto-secundario);
+}
+
+.notificacion:hover { background-color: var(--color-fondo); }
+
+.notificacion small { color: var(--color-texto-secundario); }
+
+
+.notificacion.no-leida::before {
+    content: "";
+    position: absolute;
+    left: var(--espacio-3);
+    top: 1.1rem;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--azul);
+}
+
+.desplegable-pie {
+    text-align: center;
+    color: var(--color-texto-subtitulos);
+    font-weight: var(--peso-semibold);
+}
+.punto-notif[hidden] { display: none; }

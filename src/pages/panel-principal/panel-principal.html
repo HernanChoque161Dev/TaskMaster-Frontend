@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,184 +8,245 @@
     <link rel="stylesheet" href="../../shared/css/base.css">
     <link rel="stylesheet" href="../../shared/css/layout.css">
     <link rel="stylesheet" href="../../shared/css/componentes.css">
-    <link rel="stylesheet" href="./panel-principal-style.css">
-
+    <link rel="stylesheet" href="../../shared/css/tema-oscuro.css">
+    <link rel="stylesheet" href="panel-principal-style.css">
+    <script src="../../shared/js/tema.js"></script>
+    <script src="../../shared/js/comun.js" defer></script>
+    <script src="panel-principal.js" defer></script>
+    
+    
 </head>
-
 <body>
 
-
-    <!-- Barra lateral -->
-    <aside class="barra-lateral">
-        <div class="logo">
-
-            <div class="logo-icono">
-                <img src="../../../public/img/task_master_icon_simple.svg" alt="Logo de Task Master">
-            </div>
-
-            <div>
-                <div class="logo-texto">
-                    <h1>Task Master</h1>
-                </div>
-                <div class="Gestion eficiente">Gestión eficiente</div>
-            </div>
+<!-- Barra lateral -->
+<aside class ="barra-lateral">
+    <div class="logo">
+        
+        <div class ="logo-icono"> 
+            <img src="/public/img/logo1.png" alt="Logo de Task Master">
         </div>
 
-        <nav class="menu">
-
-            <a class="nav-item" href="#">Panel Principal</a>
-            <a class="nav-item " href="#">Proyectos</a>
-            <a class="nav-item" href="#">Mis tareas</a>
-            <a class="nav-item" href="#">Miembros</a>
-            <a class="nav-item" href="#">Configuración</a>
-        </nav>
-
-
-        <button class="boton-agregar-tarea">+ Nueva Tarea</button>
-
-        <div class="ayuda">Ayuda</div>
-
-    </aside>
-
-    <!-- Main -->
-
-    <main>
-        <div class="contenido-principal">
-            <div class="titulo-principal">Panel Principal</div>
-            <div class="acciones-principales">
-                <div class="buscar-caja">
-                    <input type="text" placeholder="Buscar...">
-                </div>
-                <div class="icono-boton">Notificaciones</div>
-                <div class="icono-boton">Perfil</div>
-            </div>
+        <div>
+            <div class ="logo-texto">Task Master</div>
+            <div class ="gestion-eficiente">Gestión eficiente</div>
         </div>
-        <div class="encabezado-panel">
-            <div class="header">
-                <h1>¡Hola, [Nombre del usuario]!</h1>
-                <p>Aquí tienes el resumen de tu semana productiva.</p>
-            </div>
-            <button class="boton-accion">+ Nuevo Proyecto</button>
-        </div>
+    </div>
 
-        <!---Tarjetas-->
-        <section class="cuadriculas-tarjetas">
-            <div class="tarjetas">
-                <div class="estadisticas principales">
-                    <span class="etiqueta">Tareas Pendientes</span>
-                </div>
-                <div class="valor">12</div>
-            </div>
+    <nav class="menu">
+    
+        <a class = "nav-item" href="../panel-principal/panel-principal.html">Panel Principal</a>
+        <a class = "nav-item" href="../proyectos/proyectos.html">Proyectos</a>
+        <a class ="nav-item" href="../tareas/areas.html">Mis tareas</a>
+        <a class = "nav-item" href="../miembros/miembros.html">Miembros</a>
+        <a class = "nav-item" href="../configuracion/configuracion.html">Configuración</a>
+    </nav>
 
-            <div class="tarjetas">
-                <div class="estadisticas principales">
-                    <span class="etiqueta">En progreso</span>
-                </div>
-                <div class="valor">5</div>
-            </div>
+    <button class ="boton-agregar-tarea">+ Nueva Tarea</button>
 
-            <div class="tarjetas">
-                <div class="estadisticas principales">
-                    <span class="etiqueta">Completadas</span>
-                </div>
-                <div class="valor">20</div>
-                <div class="extra">+3 esta semana</div>
-            </div>
+    <a class="ayuda" href="">Ayuda</a> <!--agregar link a ayuda.html cuando este-->
+</aside>
 
-            <div class="tarjetas">
-                <div class="estadisticas principales">
-                    <span class="etiqueta">Proyectos activos</span>
-                </div>
-                <div class="valor">4</div>
+<label class="boton-tema-flotante" title="Cambiar tema">
+    <input type="checkbox" id="toggle-tema" aria-label="Modo oscuro">
+    <span class="icono-tema" aria-hidden="true"></span>
+</label>
+
+<!-- Main -->
+
+<main>
+    <div class="contenido-principal">
+        <div class="titulo-principal">Panel Principal</div>
+        <div class="acciones-principales">
+            <div class="buscar-caja">
+                <input type="text" id ="buscador" placeholder="Buscar...">
             </div>
 
-        </section>
-
-        <!---Grilla de contenido -->
-        <div class="grilla-contenido">
-
-            <!--Mis proyectos-->
-            <section class="panel">
-                <div class="panel-titulo">
-                    <h2>Mis proyectos</h2>
-                    <a href="#" class="ver-todos">Ver todos</a>
-                </div>
-
-                <div class="proyectos-lista">
-                    <article class="tarjeta-proyecto">
-                        <div class="proyecto-top">
-                            <h3 class="proyecto-nombre">Rediseño UI Plataforma</h3>
-                        </div>
-                        <p class="proyecto-descripcion">Actualización del sistema de diseño y flujos de usuario
-                            principales para la app</p>
-                </div>
-
-                <div class="progreso">
-                    <span>Progreso</span>
-                    <span>65%</span>
-                </div>
-
-                <div class="progreso-barra">
-                    <div class="progreso-barra-porcentaje" style="width: 65%;"></div>
-                </div>
-
-                <div class="proyecto-footer">
-                    <div class="avatares">
-                        <span class="avatar">A</span>
-                        <span class="avatar">M</span>
+            <!-- Notificaciones -->
+            <div class="menu-desplegable">
+                <button type="button" class="icono-boton" aria-label="Notificaciones" aria-expanded="false" data-desplegable>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+                        <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+                    </svg>
+                    <span class="punto-notif"></span>
+                </button>
+                <div class="desplegable desplegable-notificaciones" hidden>
+                    <div class="desplegable-titulo">
+                        <strong>Notificaciones</strong>
+                        <a href="#" data-marcar-leidas>Marcar todas como leídas</a>
                     </div>
-                    <span class="fecha">14 Sept</span>
-                </div>
-                </article>
-        </div>
-        </section>
 
-        <!----Proximos venc-->
-        <section class="panel">
-            <div class="panel-header">
-                <h2>Próximos vencimientos</h2>
+                    <a class="notificacion no-leida" href="#">
+                        <span><strong>Marina</strong> te asignó la tarea <em>Revisar copys finales</em></span>
+                        <small>hace 5 min</small>
+                    </a>
+                    <a class="notificacion no-leida" href="#">
+                        <span>La tarea <em>Entregar reporte mensual</em> vence mañana</span>
+                        <small>hace 2 h</small>
+                    </a>
+                    <a class="notificacion" href="#">
+                        <span><strong>Pedro</strong> comentó en <em>Rediseño UI Plataforma</em></span>
+                        <small>ayer</small>
+                    </a>
+
+                    <a class="desplegable-item desplegable-pie" href="#">Ver todas</a>
+                </div>
             </div>
 
-            <ul class="lista-vencimiento">
-                <li class="item-vencimiento">
-                    <input type="checkbox" class="checkbox">
-                    <div class="vecimiento-texto">
-                        <p class="vencimiento-titulo">Revisar cfnfnvffd</p>
-
-                        <div class="vencimiento-tarjetas">
-                            <span class="prioridad prioridad-alta">ALTA</span>
-                            <span class="fecha-vencimiento">Hoy</span>
-                        </div>
+            <!-- Perfil -->
+            <div class="menu-desplegable">
+                <button type="button" class="icono-boton" aria-label="Perfil" aria-expanded="false" data-desplegable>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                        <circle cx="12" cy="7" r="4"/>
+                    </svg>
+                </button>
+                <div class="desplegable" hidden>
+                    <div class="desplegable-cabecera">
+                        <strong>Usuario</strong>
+                        <span>usuario@correo.com</span>
                     </div>
-                </li>
-                <li class="item-vencimiento">
-                    <input type="checkbox" class="checkbox">
-                    <div class="vecimiento-texto">
-                        <p class="vencimiento-titulo">Actualizar cfnfnvffd</p>
+                    <hr>
+                    <a class="desplegable-item" href="#">Gestionar cuenta</a>
+                    <a class="desplegable-item" href="../configuracion/configuracion.html">Configuración</a>
+                    <a class="desplegable-item" href="#">Ayuda</a>
+                    <hr>
+                    <a class="desplegable-item" href="../Login/login.html">Cerrar sesión</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="encabezado-panel">
+        <div class="header">
+            <h1 id="saludo">¡Hola, Usuario!</h1>
+            <p>Aquí tienes el resumen de tu semana productiva.</p>
+        </div>
+        <button class="boton-accion">+ Nuevo Proyecto</button>
+    </div>
 
-                        <div class="vencimiento-tarjetas">
-                            <span class="prioridad prioridad-media">MEDIA</span>
-                            <span class="fecha-vencimiento">Mañana</span>
-                        </div>
-                    </div>
-                </li>
-                <li class="item-vencimiento">
-                    <input type="checkbox" class="checkbox">
-                    <div class="vecimiento-texto">
-                        <p class="vencimiento-titulo">Actualizar cfnfnvffd</p>
+<!---Tarjetas-->
+<section class="cuadriculas-tarjetas">
+    <div class="tarjetas">
+        <div class = "estadisticas-principales">
+            <span class ="etiqueta">Tareas Pendientes</span>
+        </div>
+        <div class = "valor" id="contador-pendientes">12</div>
+    </div>
 
-                        <div class="vencimiento-tarjetas">
-                            <span class="prioridad prioridad-baja">BAJA</span>
-                            <span class="fecha-vencimiento">13 DE DIC</span>
+     <div class="tarjetas">
+        <div class = "estadisticas-principales">
+            <span class ="etiqueta">En progreso</span>
+        </div>
+        <div class = "valor">5</div>
+    </div>
+
+    <div class="tarjetas">
+        <div class = "estadisticas-principales">
+            <span class ="etiqueta">Completadas</span>
+        </div>
+        <div class = "valor" id="contador-completadas">20</div>
+        <div class ="extra">+3 esta semana</div>
+    </div>
+
+    <div class="tarjetas">
+        <div class = "estadisticas-principales">
+            <span class ="etiqueta">Proyectos activos</span>
+        </div>
+        <div class ="valor" id ="contador-proyectos">4</div>
+    </div>
+
+</section>
+
+<!---Grilla de contenido -->
+<div class="grilla-contenido" >
+
+    <!--Mis proyectos-->
+    <section class ="panel">
+        <div class="panel-titulo">
+            <h2>Mis proyectos</h2>
+            <a href="proyectos.html" class="ver-todos">Ver todos</a>
+        </div>
+    
+        <div class="proyectos-lista">
+            <article class ="tarjeta-proyecto">
+                <div class="proyecto-top">
+                    <h3 class="proyecto-nombre">Rediseño UI Plataforma</h3>
+                    <div class ="menu-proyecto">
+                        <button class="boton-menu" aria-label="Opciones del proyecto">⋮</button>
+                        <div class ="menu-opciones">
+                            <button class ="opcion-editar">Editar</button>
+                            <button class="opcion-eliminar">Eliminar</button>
                         </div>
                     </div>
-                </li>
+                </div>
+             <p class="proyecto-descripcion">Actualización del sistema de diseño y flujos de usuario principales para la app</p>
+        
 
-            </ul>
-            <button class="boton-ver-tareas">Ver todas las tareas</button>
-        </section>
+        <div class="progreso">
+            <span>Progreso</span>
+            <span>65%</span>
         </div>
-    </main>
+
+        <div class ="progreso-barra">
+            <div class ="progreso-barra-porcentaje" style="width: 65%;"></div>
+        </div>
+
+        <div class = "proyecto-footer">
+            <div class="avatares">
+                <span class="avatar">A</span>
+                <span class="avatar">M</span>
+            </div>
+            <span class="fecha">14 Sept</span>
+        </div>
+        </article>
+     </div>
+    </section>
+
+    <!----Proximos venc-->
+    <section class="panel">
+        <div class="panel-header">
+            <h2>Próximos vencimientos</h2>
+        </div>
+
+        <ul class="lista-vencimiento">
+            <li class="item-vencimiento">
+                <input type="checkbox" class="checkbox-tarea">
+                <div class="vencimiento-texto">
+                    <p class="vencimiento-titulo">Revisar el proyecto </p>
+
+                    <div class ="vencimiento-tarjetas">
+                        <span class ="prioridad prioridad-alta">ALTA</span>
+                        <span class ="fecha-vencimiento">Hoy</span>
+                    </div>
+                </div>
+            </li>
+            <li class="item-vencimiento">
+                <input type="checkbox" class="checkbox-tarea">
+                <div class="vencimiento-texto">
+                    <p class="vencimiento-titulo">Actualizar las variables</p>
+
+                    <div class ="vencimiento-tarjetas">
+                        <span class ="prioridad prioridad-media">MEDIA</span>
+                        <span class ="fecha-vencimiento">Mañana</span>
+                    </div>
+                </div>
+            </li>
+            <li class="item-vencimiento">
+                <input type="checkbox" class="checkbox-tarea">
+                <div class="vencimiento-texto">
+                    <p class="vencimiento-titulo">Actualizar el estado del proyecto</p>
+
+                    <div class ="vencimiento-tarjetas">
+                        <span class ="prioridad prioridad-baja">BAJA</span>
+                        <span class ="fecha-vencimiento">13 DE DIC</span>
+                    </div>
+                </div>
+            </li>
+
+        </ul>
+        <button class="boton-ver-tareas">Ver todas las tareas</button>
+    </section>
+   </div>
+  </main>
 </body>
-
 </html>
