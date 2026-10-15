@@ -19,3 +19,27 @@
     box-shadow: var(--sombra-modal);
     transform: translateY(-2px);
 }
+
+/* Botón de cerrar sesión */
+.boton-cerrar-sesion {
+    margin-top: 12px;
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #e5484d;
+    border-radius: 8px;
+    background: transparent;
+    color: #e5484d;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+
+.boton-cerrar-sesion:hover:not(:disabled) {
+    background: #e5484d;
+    color: #fff;
+}
+
+.boton-cerrar-sesion:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
