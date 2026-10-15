@@ -180,15 +180,10 @@ export async function manejarRespuestaGoogle(response) {
         if (!googleToken) {
             throw new Error('No se recibió la credencial de autenticación de Google.');
         }
-        alert(googleToken);
-
-
         showAlert(loginAlert, 'Verificando con Google...', 'success');
         showAlert(registerAlert, 'Verificando con Google...', 'success');
 
         const data = await autenticarConGoogle(googleToken);
-
-        alert(JSON.stringify(data));
 
         // Almacenar token de sesión y datos del usuario
         if (data?.token) {

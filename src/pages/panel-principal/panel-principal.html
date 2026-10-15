@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="panel-principal-style.css">
     <script src="../../shared/js/tema.js"></script>
     <script src="../../shared/js/comun.js" defer></script>
-    <script src="panel-principal.js" defer></script>
+    <script type="module" src="panel-principal.js"></script>
 
 
 </head>
@@ -48,19 +48,14 @@
         <button class="boton-agregar-tarea">+ Nueva Tarea</button>
 
         <a class="ayuda" href="">Ayuda</a> <!--agregar link a ayuda.html cuando este-->
+
+        <button type="button" id="btnCerrarSesion" class="boton-cerrar-sesion">Cerrar Sesión</button>
     </aside>
 
     <label class="boton-tema-flotante" title="Cambiar tema">
         <input type="checkbox" id="toggle-tema" aria-label="Modo oscuro">
         <span class="icono-tema" aria-hidden="true"></span>
     </label>
-    <button class="boton-agregar-tarea">+ Nueva Tarea</button>
-
-    <div class="ayuda">Ayuda</div>
-
-    <button type="button" id="btnCerrarSesion" class="boton-cerrar-sesion">Cerrar Sesión</button>
-
-    </aside>
 
     <!-- Main -->
 
@@ -118,15 +113,15 @@
                     </button>
                     <div class="desplegable" hidden>
                         <div class="desplegable-cabecera">
-                            <strong>Usuario</strong>
-                            <span>usuario@correo.com</span>
+                            <strong id="perfil-nombre">Usuario</strong>
+                            <span id="perfil-correo">usuario@correo.com</span>
                         </div>
                         <hr>
                         <a class="desplegable-item" href="#">Gestionar cuenta</a>
                         <a class="desplegable-item" href="../configuracion/configuracion.html">Configuración</a>
                         <a class="desplegable-item" href="#">Ayuda</a>
                         <hr>
-                        <a class="desplegable-item" href="../Login/login.html">Cerrar sesión</a>
+                        <a class="desplegable-item" id="enlaceCerrarSesion" href="../Login/login.html">Cerrar sesión</a>
                     </div>
                 </div>
             </div>
@@ -264,12 +259,6 @@
             </section>
         </div>
     </main>
-    </ul>
-    <button class="boton-ver-tareas">Ver todas las tareas</button>
-    </section>
-    </div>
-    </main>
-    <script type="module" src="./panel-principal.js" defer></script>
 </body>
 
 </html>

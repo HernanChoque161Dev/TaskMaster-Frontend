@@ -1,4 +1,21 @@
+import { logoutUsuario } from './api/panel-principal-service.js';
 
+/* GUARDA DE SESIÓN: sin token no se puede ver el panel */
+if (!localStorage.getItem('auth_token')) {
+    window.location.replace('../Login/login.html');
+}
+
+/**
+ * Obtiene el usuario autenticado guardado en el login.
+ * @returns {{nombreUsuario?: string, correo?: string}|null}
+ */
+function obtenerUsuarioGuardado() {
+    try {
+        return JSON.parse(localStorage.getItem('usuario'));
+    } catch {
+        return null;
+    }
+}
 
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -40,9 +57,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
         });
     });
-    /* SALUDO  */
-    const nombreUsuario = "Usuario"; // más adelante puede venir de datos.js
+    /* SALUDO Y PERFIL (datos del usuario autenticado) */
+    const usuario = obtenerUsuarioGuardado();
+    const nombreUsuario = usuario?.nombreUsuario || "Usuario";
     document.getElementById("saludo").textContent = `¡Hola, ${nombreUsuario}!`;
+    document.getElementById("perfil-nombre").textContent = nombreUsuario;
+    if (usuario?.correo) {
+        document.getElementById("perfil-correo").textContent = usuario.correo;
+    }
 
 
     /* BUSCADOR */
@@ -144,18 +166,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-import { logoutUsuario } from './api/panel-principal-service.js';
-
 const btnCerrarSesion = document.getElementById('btnCerrarSesion');
+const enlaceCerrarSesion = document.getElementById('enlaceCerrarSesion');
 
 /**
  * Cierra la sesión: notifica al backend y limpia siempre los datos locales.
  */
-async function cerrarSesion() {
+async function cerrarSesion(event) {
+    event.preventDefault();
     const token = localStorage.getItem('auth_token');
 
-    btnCerrarSesion.disabled = true;
-    btnCerrarSesion.textContent = 'Cerrando sesión...';
+    if (btnCerrarSesion) {
+        btnCerrarSesion.disabled = true;
+        btnCerrarSesion.textContent = 'Cerrando sesión...';
+    }
 
     try {
         await logoutUsuario(token);
@@ -167,6 +191,5 @@ async function cerrarSesion() {
     }
 }
 
-if (btnCerrarSesion) {
-    btnCerrarSesion.addEventListener('click', cerrarSesion);
-}
+btnCerrarSesion?.addEventListener('click', cerrarSesion);
+enlaceCerrarSesion?.addEventListener('click', cerrarSesion);

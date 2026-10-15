@@ -1,9 +1,9 @@
 /**
  * Servicio de Autenticación y Registro para la vista de Login
- * Endpoint Base: http://localhost:3000/api/v1
+ * Endpoint Base: definido en src/shared/js/config.js (API_BASE_URL)
  */
 
-const BASE_URL = 'http://localhost:3000/api/v1';
+import { API_BASE_URL as BASE_URL } from '../../../shared/js/config.js';
 
 /**
  * Realiza el inicio de sesión del usuario con credenciales estándar.
