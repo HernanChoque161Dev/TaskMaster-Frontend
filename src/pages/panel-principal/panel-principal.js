@@ -79,6 +79,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /* Menús desplegables de notificaciones y perfil */
     const cerrarMenusDesplegables = () => {
+        if (document.querySelector(".menu-desplegable.en-cierre-sesion")) {
+            return;
+        }
         document.querySelectorAll(".menu-desplegable .desplegable").forEach((menu) => {
             menu.hidden = true;
         });
@@ -166,23 +169,53 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-const btnCerrarSesion = document.getElementById('btnCerrarSesion');
 const enlaceCerrarSesion = document.getElementById('enlaceCerrarSesion');
+const bloqueoPantalla = document.getElementById('bloqueo-pantalla');
 
 /**
- * Cierra la sesión: notifica al backend y limpia siempre los datos locales.
+ * Cierra la sesión del usuario:
+ * 1. Activa el overlay para bloquear la pantalla.
+ * 2. Mantiene abierto y visible el menú del perfil.
+ * 3. Cambia el botón a color rojo con el texto "cerrando sesion ...".
+ * 4. Envía notificación al backend y borra credenciales locales antes de redirigir al login.
  */
 async function cerrarSesion(event) {
     event.preventDefault();
-    const token = localStorage.getItem('auth_token');
 
-    if (btnCerrarSesion) {
-        btnCerrarSesion.disabled = true;
-        btnCerrarSesion.textContent = 'Cerrando sesión...';
+    // 1. Bloqueo interactivo y visual de pantalla
+    if (bloqueoPantalla) {
+        bloqueoPantalla.hidden = false;
+        void bloqueoPantalla.offsetWidth; // Forzar reflujo para transición suave
+        bloqueoPantalla.classList.add('activo');
     }
 
+    // 2. Mantener abierto y elevar el menú desplegable sobre el overlay
+    const contenedorDesplegable = enlaceCerrarSesion?.closest('.menu-desplegable');
+    if (contenedorDesplegable) {
+        contenedorDesplegable.classList.add('en-cierre-sesion');
+        const panel = contenedorDesplegable.querySelector('.desplegable');
+        if (panel) {
+            panel.hidden = false;
+        }
+    }
+
+    // 3. Modificar botón a color rojo y mensaje "cerrando sesion ..."
+    if (enlaceCerrarSesion) {
+        if ('disabled' in enlaceCerrarSesion) {
+            enlaceCerrarSesion.disabled = true;
+        }
+        enlaceCerrarSesion.classList.add('cerrando-sesion');
+        enlaceCerrarSesion.textContent = 'cerrando sesion ...';
+    }
+
+    const token = localStorage.getItem('auth_token');
+    const delayMinimoVisual = new Promise((resolve) => setTimeout(resolve, 700));
+
     try {
-        await logoutUsuario(token);
+        await Promise.allSettled([
+            logoutUsuario(token),
+            delayMinimoVisual
+        ]);
     } finally {
         localStorage.removeItem('auth_token');
         localStorage.removeItem('usuario');
@@ -191,5 +224,4 @@ async function cerrarSesion(event) {
     }
 }
 
-btnCerrarSesion?.addEventListener('click', cerrarSesion);
 enlaceCerrarSesion?.addEventListener('click', cerrarSesion);

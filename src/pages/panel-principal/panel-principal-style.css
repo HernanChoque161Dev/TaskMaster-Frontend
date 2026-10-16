@@ -179,26 +179,80 @@
     display: none;
 }
 
-/* Botón de cerrar sesión */
-.boton-cerrar-sesion {
-    margin-top: 12px;
+/* Bloqueo de pantalla (Overlay) durante el cierre de sesión */
+.bloqueo-pantalla {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(15, 23, 42, 0.5);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 999;
+    cursor: wait;
+    pointer-events: all;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+
+.bloqueo-pantalla.activo {
+    opacity: 1;
+}
+
+/* Eleva el contenedor del desplegable sobre el overlay para mantener visible la acción */
+.menu-desplegable.en-cierre-sesion {
+    position: relative;
+    z-index: 1000;
+}
+
+.menu-desplegable.en-cierre-sesion .desplegable {
+    z-index: 1001;
+    pointer-events: none;
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+}
+
+/* Botón de cerrar sesión dentro del menú desplegable */
+button.desplegable-item.boton-cerrar-sesion-desplegable {
     width: 100%;
-    padding: 10px 14px;
-    border: 1px solid #e5484d;
-    border-radius: 8px;
+    text-align: left;
     background: transparent;
-    color: #e5484d;
-    font-weight: 600;
+    border: none;
+    border-top: 1px solid var(--color-bordes);
     cursor: pointer;
-    transition: background 0.2s, color 0.2s;
+    font-family: inherit;
+    font-size: var(--texto-secundario);
+    transition: color 0.2s ease, background-color 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: var(--espacio-2);
 }
 
-.boton-cerrar-sesion:hover:not(:disabled) {
-    background: #e5484d;
-    color: #fff;
+button.desplegable-item.boton-cerrar-sesion-desplegable:hover:not(:disabled) {
+    background-color: var(--celesteClaro);
 }
 
-.boton-cerrar-sesion:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
+/* Estado activo: cerrando sesión en color rojo y con animación */
+.boton-cerrar-sesion-desplegable.cerrando-sesion {
+    color: var(--color-prioridad-alta, #e5484d) !important;
+    font-weight: var(--peso-semibold);
+    background-color: rgba(220, 38, 38, 0.1) !important;
+    cursor: wait !important;
+}
+
+.boton-cerrar-sesion-desplegable.cerrando-sesion::before {
+    content: "";
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border: 2px solid var(--color-prioridad-alta, #e5484d);
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: girar-spinner-logout 0.75s linear infinite;
+    flex-shrink: 0;
+}
+
+@keyframes girar-spinner-logout {
+    to {
+        transform: rotate(360deg);
+    }
 }

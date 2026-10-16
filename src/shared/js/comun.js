@@ -40,6 +40,7 @@ document.addEventListener("click", function (e) {
 
 document.addEventListener("keydown", function (e) {
     if (e.key !== "Escape") return;
+    if (document.querySelector(".menu-desplegable.en-cierre-sesion")) return;
     document.querySelectorAll(".desplegable").forEach(function (p) { p.hidden = true; });
     document.querySelectorAll("[data-desplegable]").forEach(function (b) {
         b.setAttribute("aria-expanded", "false");
