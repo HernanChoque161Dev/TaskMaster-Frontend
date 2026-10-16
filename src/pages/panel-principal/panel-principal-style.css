@@ -189,7 +189,6 @@
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
     z-index: 999;
-    cursor: wait;
     pointer-events: all;
     opacity: 0;
     transition: opacity 0.25s ease;
@@ -236,7 +235,6 @@ button.desplegable-item.boton-cerrar-sesion-desplegable:hover:not(:disabled) {
     color: var(--color-prioridad-alta, #e5484d) !important;
     font-weight: var(--peso-semibold);
     background-color: rgba(220, 38, 38, 0.1) !important;
-    cursor: wait !important;
 }
 
 .boton-cerrar-sesion-desplegable.cerrando-sesion::before {
