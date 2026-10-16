@@ -2,7 +2,7 @@ import { logoutUsuario } from './api/panel-principal-service.js';
 
 /* GUARDA DE SESIÓN: sin token no se puede ver el panel */
 if (!localStorage.getItem('auth_token')) {
-    window.location.replace('../Login/login.html');
+    window.location.replace('../login/login.html');
 }
 
 /**
@@ -187,7 +187,7 @@ async function cerrarSesion(event) {
         localStorage.removeItem('auth_token');
         localStorage.removeItem('usuario');
         sessionStorage.clear();
-        window.location.replace('../Login/login.html');
+        window.location.replace('../login/login.html');
     }
 }
 

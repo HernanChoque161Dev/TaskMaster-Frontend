@@ -1,0 +1,263 @@
+
+/* Contenedor principal de la sección de configuración.
+   Acomoda todas las tarjetas en una columna vertical y limita su ancho. */
+.contenedor-configuracion {
+  display: grid;
+  grid-template-columns: minmax(0, 760px);
+  gap: var(--espacio-5);
+  width: 100%;
+  align-items: start;
+}
+
+/* Tarjeta base para cada bloque de configuración: perfil, preferencias y seguridad. */
+.tarjconfiguracion {
+  width: 100%;
+  padding: var(--espacio-6);
+  background: var(--color-superficies);
+  border: 1px solid var(--color-bordes);
+  border-radius: var(--radio-tarjetas);
+  box-shadow: var(--sombra-tarjeta);
+}
+
+/* Título de cada tarjeta. */
+.tarjconfiguracion h2 {
+  margin-bottom: var(--espacio-2);
+  font-size: var(--texto-subtitulos);
+  line-height: 1.2;
+  font-weight: var(--peso-bold);
+  color: var(--color-texto-principal);
+}
+
+/* Descripción breve debajo del título de cada sección. */
+.tarjconfiguracion > p {
+  margin: 0 0 var(--espacio-4);
+  color: var(--color-texto-placeholder);
+  font-size: var(--texto-secundario);
+  line-height: 1.45;
+}
+
+/* Formulario del bloque de perfil y seguridad. */
+.tarjconfiguracion form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--espacio-2);
+}
+
+/* Etiquetas de los campos del formulario. */
+.tarjconfiguracion label {
+  display: block;
+  margin-bottom: var(--espacio-1);
+  font-size: var(--texto-secundario);
+  font-weight: var(--peso-medio);
+  color: var(--color-texto-principal);
+}
+
+/* Inputs de texto y selectores usados en la configuración. */
+.tarjconfiguracion input,
+.tarjconfiguracion select {
+  width: 100%;
+  height: 42px;
+  padding: 0 var(--espacio-3);
+  border: 1px solid var(--color-bordes);
+  border-radius: var(--radio-inputs);
+  background: var(--color-fondo);
+  color: var(--color-texto-principal);
+  font: inherit;
+  font-size: 0.98rem;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+/* Placeholder más claro para inputs. */
+.tarjconfiguracion input::placeholder {
+  color: var(--color-texto-placeholder);
+}
+
+/* Efecto visual al enfocar los campos. */
+.tarjconfiguracion input:focus,
+.tarjconfiguracion select:focus {
+  border-color: var(--celesteOscuro);
+  box-shadow: 0 0 0 3px rgba(112, 160, 208, 0.2);
+  outline: none;
+}
+
+/* Ajuste del padding inferior de la tarjeta de preferencias. */
+.preferencias-card {
+  padding-bottom: var(--espacio-5);
+}
+
+/* Fila de opción dentro de preferencias (texto + switch/select). */
+.preferencia-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: var(--espacio-5);
+  padding-top: var(--espacio-1);
+}
+
+/* Margen superior de la primera fila dentro de preferencias. */
+.preferencia-row:first-of-type {
+  margin-top: var(--espacio-4);
+}
+
+/* Bloque de texto de una preferencia. */
+.preferencia-texto {
+  flex: 1;
+}
+
+.preferencia-texto label,
+.preferencia-texto span {
+  display: block;
+}
+
+/* Título de cada opción de preferencia. */
+.preferencia-texto label {
+  margin: 0 0 var(--espacio-1);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-texto-principal);
+}
+
+/* Descripción de la opción de preferencia. */
+.preferencia-texto span {
+  color: var(--color-texto-placeholder);
+  font-size: var(--texto-pequeño);
+  line-height: 1.35;
+}
+
+/* Toggle switch para activar/desactivar opciones. */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 48px;
+  height: 27px;
+  margin-left: auto;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  inset: 0;
+  background: var(--color-bordes);
+  border-radius: 999px;
+  transition: background 0.2s ease;
+}
+
+.slider::before {
+  content: "";
+  position: absolute;
+  width: 19px;
+  height: 19px;
+  left: 4px;
+  top: 4px;
+  border-radius: 50%;
+  background: var(--blanco);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.18);
+  transition: transform 0.2s ease;
+}
+
+/* Estado activo del switch. */
+.switch input:checked + .slider {
+  background: var(--azul);
+}
+
+/* Movimiento del círculo del switch cuando está activo. */
+.switch input:checked + .slider::before {
+  transform: translateX(21px);
+}
+
+/* Select de idioma en preferencias. */
+.preferencia-row select {
+  width: min(180px, 42%);
+  height: 36px;
+  padding-right: 36px;
+}
+
+/* Botones de acción dentro de la configuración. */
+.boton-configuracion {
+  align-self: flex-start;
+  padding: var(--espacio-2) var(--espacio-4);
+  margin-top: var(--espacio-3);
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-texto-botones);
+  background: var(--azul);
+  border: 1px solid var(--azul);
+  border-radius: var(--radio-botones);
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+/* Hover del botón. */
+.boton-configuracion:hover {
+  background: var(--celesteOscuro);
+  border-color: var(--celesteOscuro);
+}
+
+/* Efecto al pulsar el botón. */
+.boton-configuracion:active {
+  transform: translateY(1px);
+}
+
+.boton-secundario {
+  background: transparent;
+  color: var(--azul);
+}
+
+.boton-secundario:hover {
+  background: var(--celesteClaro);
+  border-color: var(--celesteClaro);
+}
+
+@media (max-width: 760px) {
+  body {
+    display: block;
+    overflow-x: hidden;
+  }
+
+  .barra-lateral {
+    position: static;
+    width: 100%;
+    height: auto;
+    padding: var(--espacio-4);
+  }
+
+  .logo-icono {
+    width: 56px;
+    height: 56px;
+  }
+
+  .menu {
+    margin-top: var(--espacio-4);
+    flex: none;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .barra-lateral .boton-agregar-tarea,
+  .barra-lateral .ayuda {
+    margin-top: var(--espacio-3);
+  }
+
+  main {
+    padding: var(--espacio-4);
+  }
+
+  main > h1 {
+    display: block;
+  }
+
+  .contenedor-configuracion {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .preferencia-row {
+    align-items: flex-start;
+  }
+}
