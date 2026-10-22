@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miembros</title>
+    <link rel="stylesheet" href="/src/shared/css/variables.css">
+    <link rel="stylesheet" href="/src/shared/css/base.css">
+    <link rel="stylesheet" href="/src/shared/css/layout.css">
+    <link rel="stylesheet" href="/src/shared/css/componentes.css">
+    <link rel="stylesheet" href="/src/shared/css/tema-oscuro.css">
+    <link rel="stylesheet" href="/src/shared/css/responsive.css">
+    <link rel="stylesheet" href="/src/pages/miembros/miembros.css">
+    <script src="/src/shared/js/tema.js"></script>
+    <script src="/src/shared/js/comun.js" defer></script>
+    <script src="/src/shared/js/menu-movil.js" defer></script>
+    <script type="module" src="/src/shared/js/sidebar-routes.js"></script>
+    <script src="/src/pages/miembros/miembros.js" defer></script>
+</head>
+
+<body>
+
+    <!-- Barra lateral -->
+    <aside class="barra-lateral" id="barra-lateral">
+        <div class="logo">
+            <div class="logo-icono">
+                <img src="/public/img/logo1.png" alt="Logo de Task Master">
+            </div>
+            <div>
+                <div class="logo-texto">Task Master</div>
+                <div class="gestion-eficiente">Gestión eficiente</div>
+            </div>
+        </div>
+
+        <nav class="menu">
+            <a class="nav-item" href="/panel-principal">Panel Principal</a>
+            <a class="nav-item" href="/proyectos">Proyectos</a>
+            <a class="nav-item" href="/tareas">Mis tareas</a>
+            <a class="nav-item" href="/calendario">Calendario</a>
+            <a class="nav-item activo" href="/miembros" aria-current="page">Miembros</a>
+            <a class="nav-item" href="/configuracion">Configuración</a>
+
+        </nav>
+
+        <button class="boton-agregar-tarea">+ Nueva Tarea</button>
+        <a class="ayuda" href="">Ayuda</a> <!--agregar link a ayuda.html cuando este-->
+
+    </aside>
+    <div class="fondo-menu" aria-hidden="true"></div>
+
+    <label class="boton-tema-flotante" title="Cambiar tema">
+        <input type="checkbox" id="toggle-tema" aria-label="Modo oscuro">
+        <span class="icono-tema" aria-hidden="true"></span>
+    </label>
+
+    <!---Main-->
+    <main>
+        <div class="contenido-principal">
+            <div class="encabezado-miembros">
+                <h1 class="titulo-principal">Miembros del proyecto</h1>
+                <p class="subtitulo">Gestiona el acceso y los roles de tu equipo</p>
+            </div>
+            <div class="acciones-principales">
+                <button type="button" class="boton-menu-movil" aria-label="Abrir menú" aria-controls="barra-lateral"
+                    aria-expanded="false">☰</button>
+                <div class="buscar-caja">
+                    <input type="search" id="buscador" aria-label="Buscar miembro" placeholder="Buscar miembro...">
+                </div>
+                <button class="boton-agregar-miembro" type="button">Agregar miembro</button>
+                <button class="boton-eliminar-miembro" id="boton-eliminar-miembro" type="button">Eliminar
+                    miembro</button>
+            </div>
+        </div>
+
+        <!--Tarjetas-->
+        <section class="cuadriculas-tarjetas" id="lista-miembros">
+
+            <article class="tarjetas tarjeta-miembro">
+                <div class="miembro-info">
+                    <img class="avatar avatar-grande" src="/public/img/usuario.png" alt="Elena Rodriguez">
+                    <div>
+                        <h2 class="miembro-nombre">Elena Rodriguez</h2>
+                        <span class="miembro-correo">elena@gmail.com</span>
+                    </div>
+                </div>
+                <div class="miembro-pie">
+                    <span class="rol rol-admin">Admin</span>
+                    <span class="ultimo-acceso">Último acceso: Hace 2 h</span>
+                </div>
+            </article>
+
+            <article class="tarjetas tarjeta-miembro">
+                <div class="miembro-info">
+                    <img class="avatar avatar-grande" src="/public/img/usuario.png" alt="Pedro Gomez">
+                    <div>
+                        <h2 class="miembro-nombre">Pedro Gomez</h2>
+                        <span class="miembro-correo">pedrogomez@gmail.com</span>
+                    </div>
+                </div>
+                <div class="miembro-pie">
+                    <span class="rol rol-editor">Editor</span>
+                    <span class="ultimo-acceso">Último acceso: Ayer</span>
+                </div>
+            </article>
+            <article class="tarjetas tarjeta-miembro">
+                <div class="miembro-info">
+                    <img class="avatar avatar-grande" src="/public/img/usuario.png" alt="Carlos Martinez">
+                    <div>
+                        <h2 class="miembro-nombre">Carlos Martinez</h2>
+                        <span class="miembro-correo">carlosmartinez@gmail.com</span>
+                    </div>
+                </div>
+                <div class="miembro-pie">
+                    <span class="rol rol-lector">Lector</span>
+                    <span class="ultimo-acceso">Último acceso: Hace 5 días</span>
+                </div>
+            </article>
+        </section>
+
+        <dialog class="modal-miembros" id="modal-eliminar-miembro" aria-labelledby="titulo-modal-eliminar">
+            <form id="form-eliminar-miembros">
+                <header class="modal-miembros-header">
+                    <h2 id="titulo-modal-eliminar">Eliminar miembros</h2>
+                    <button class="modal-miembros-cerrar" type="button" aria-label="Cerrar"
+                        data-cerrar-eliminacion>&times;</button>
+                </header>
+                <div class="modal-miembros-contenido">
+                    <p>Seleccioná los miembros que querés quitar del proyecto.</p>
+                    <div class="modal-miembros-lista" id="lista-eliminar-miembros"></div>
+                    <p class="modal-miembros-mensaje" id="mensaje-eliminar-miembros" role="alert"></p>
+                </div>
+                <footer class="modal-miembros-footer">
+                    <button class="modal-miembros-cancelar" type="button" data-cerrar-eliminacion>Cancelar</button>
+                    <button class="boton-confirmar-eliminacion" type="submit">Eliminar seleccionados</button>
+                </footer>
+            </form>
+        </dialog>
+
+        <dialog class="modal-miembros" id="modal-agregar-miembro" aria-labelledby="titulo-modal-miembros">
+            <form id="form-agregar-miembros">
+                <header class="modal-miembros-header">
+                    <h2 id="titulo-modal-miembros">Agregar miembro</h2>
+                    <button class="modal-miembros-cerrar" type="button" aria-label="Cerrar"
+                        data-cerrar-modal>&times;</button>
+                </header>
+                <div class="modal-miembros-contenido">
+                    <label class="visualmente-oculto" for="buscar-sugerencia">Buscar sugerencias por nombre o
+                        email</label>
+                    <input class="modal-miembros-busqueda" id="buscar-sugerencia" type="search"
+                        placeholder="Buscar por nombre o email...">
+                    <h3>Resultados sugeridos</h3>
+                    <div class="modal-miembros-lista" id="lista-sugerencias"></div>
+                    <p class="modal-miembros-mensaje" id="mensaje-modal-miembros" aria-live="polite"></p>
+                </div>
+                <footer class="modal-miembros-footer">
+                    <button class="modal-miembros-cancelar" type="button" data-cerrar-modal>Cancelar</button>
+                    <button class="boton-agregar-miembro" type="submit">Agregar miembros</button>
+                </footer>
+            </form>
+        </dialog>
+
+    </main>
+
+</body>
+
+</html>

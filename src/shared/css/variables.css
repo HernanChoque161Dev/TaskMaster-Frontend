@@ -29,6 +29,7 @@
     --texto-subtitulos:1.5rem; /*subtitulos*/
     --texto-grande:1.75rem;/*saludo panel principal*/
     --texto-numeros:1.85rem;/*numero grandes en las tarjetas*/
+    --texto-medio: 1rem;
 
     --peso-normal:400;
     --peso-medio:500;

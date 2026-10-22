@@ -1,0 +1,452 @@
+/*ESPECIFICO DE MIEMBROS 
+  La estructura (body, sidebar, main, .contenido-principal, .acciones-principales)
+   viene de layout.css; botón, tarjeta, avatar, buscador y colores vienen de
+   componentes.css, base.css y variables.css (incluido el modo oscuro).
+   Este archivo se carga al final para poder ajustar lo necesario. */
+
+.barra-lateral {
+    grid-column: 1;
+    grid-row: 1;
+}
+ 
+main {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.boton-tema-flotante {
+    position: fixed;
+    right: var(--espacio-6);
+    bottom: var(--espacio-6);
+    z-index: 20;
+    display: grid;
+    width: 3.5rem;
+    height: 3.5rem;
+    place-items: center;
+    border-radius: 50%;
+    background-color: var(--azul);
+    color: var(--color-texto-botones);
+    box-shadow: var(--sombra-modal);
+    cursor: pointer;
+    transition: background-color 0.15s ease, transform 0.15s ease;
+}
+
+.boton-tema-flotante:hover {
+    background-color: var(--celesteOscuro);
+    transform: translateY(-2px);
+}
+
+.boton-tema-flotante:focus-within {
+    outline: 3px solid var(--celesteMedio);
+    outline-offset: 3px;
+}
+
+.boton-tema-flotante input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+}
+
+.icono-tema::before {
+    content: "☾";
+    font-size: 1.75rem;
+    line-height: 1;
+}
+
+.boton-tema-flotante input:checked + .icono-tema::before {
+    content: "☀";
+}
+
+.titulo-principal {
+    display: block;
+}
+
+.encabezado-miembros {
+    min-width: 0;
+}
+ 
+.subtitulo {
+    margin-top: var(--espacio-2);
+    font-size: var(--texto-base);
+    color: var(--color-texto-subtitulos);
+}
+/* El input ya tiene borde, radio y fondo en componentes.css; acá solo tamaño e ícono */
+.buscar-caja input {
+    width: 16rem;
+    padding-left: 2.5rem;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%2370a0d0' stroke-width='2' stroke-linecap='round'><circle cx='11' cy='11' r='7'/><path d='M20 20l-3.5-3.5'/></svg>");
+    background-repeat: no-repeat;
+    background-position: 0.75rem center;
+}
+ 
+/* ---------- Cuadrícula ---------- */
+/* layout.css la define en 4 columnas fijas (para estadísticas);
+   acá se adapta al ancho porque son tarjetas más anchas */
+.cuadriculas-tarjetas {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+}
+ 
+/* .tarjetas ya aporta fondo, radio, sombra, padding y flex en columna */
+.tarjeta-miembro {
+    gap: var(--espacio-4);
+    border: 1px solid var(--color-bordes);
+    border-radius: var(--radio-tarjetas);
+}
+
+.tarjeta-miembro[hidden] {
+    display: none;
+}
+
+.miembro-info {
+    display: flex;
+    align-items: center;
+    gap: var(--espacio-3);
+    padding-bottom: var(--espacio-4);
+    border-bottom: 1px solid var(--color-bordes);
+}
+ 
+/* .avatar de componentes.css es de 28px: versión grande para esta pantalla */
+.avatar-grande {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    border: none;
+    object-fit: cover;
+    font-size: var(--texto-base);
+}
+ 
+.miembro-correo {
+    font-size: var(--texto-secundario);
+    color: var(--color-texto-placeholder);
+}
+ 
+.miembro-pie {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+ 
+.ultimo-acceso {
+    font-size: var(--texto-secundario);
+    color: var(--color-texto-placeholder);
+}
+ 
+/* ---------- Roles ---------- */
+/* No uso .etiqueta porque componentes.css ya la usa para las estadísticas */
+.rol {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 2px var(--espacio-3);
+    border-radius: 999px;
+    font-size: var(--texto-pequeño);
+    font-weight: var(--peso-semibold);
+}
+ 
+.rol-admin {
+    color: var(--azul);
+    background-color: var(--celesteClaro);
+}
+ 
+.rol-admin::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--azul);
+}
+ 
+/* Con contorno en vez de relleno: funciona igual en claro y oscuro */
+.rol-editor {
+    color: var(--color-texto-principal);
+    background-color: transparent;
+    border: 1px solid var(--color-bordes);
+}
+ 
+/* Reutiliza la paleta de prioridad media (naranja); cambiala si tenés una variable de rol.
+   --color-prioridad-media-fondo solo existe en tema-oscuro.css, por eso el valor de respaldo
+   para el tema claro (ver nota: conviene agregarla a variables.css). */
+.rol-lector {
+    color: var(--color-prioridad-media);
+    background-color: var(--color-prioridad-media-fondo, rgba(217, 119, 6, 0.15));
+}
+
+.boton-agregar-miembro {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--espacio-2);
+    padding: var(--espacio-3) var(--espacio-4);
+    border: 0;
+    border-radius: var(--radio-botones);
+    background-color: var(--azul);
+    color: var(--color-texto-botones);
+    font: inherit;
+    font-size: var(--texto-secundario);
+    font-weight: var(--peso-semibold);
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.boton-agregar-miembro::before {
+    content: "+";
+    font-size: 1.1em;
+    line-height: 1;
+}
+
+.boton-agregar-miembro:hover {
+    background-color: var(--celesteOscuro);
+}
+
+.boton-agregar-miembro:focus-visible {
+    outline: 3px solid var(--celesteMedio);
+    outline-offset: 2px;
+}
+
+.boton-eliminar-miembro,
+.boton-confirmar-eliminacion {
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
+    padding: var(--espacio-3) var(--espacio-4);
+    border: 1px solid var(--color-prioridad-alta);
+    border-radius: var(--radio-botones);
+    background-color: transparent;
+    color: var(--color-prioridad-alta);
+    font: inherit;
+    font-size: var(--texto-secundario);
+    font-weight: var(--peso-semibold);
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.boton-eliminar-miembro:hover,
+.boton-confirmar-eliminacion:hover {
+    background-color: var(--color-prioridad-alta-fondo, rgba(220, 38, 38, 0.15));
+}
+
+.boton-eliminar-miembro:focus-visible,
+.boton-confirmar-eliminacion:focus-visible {
+    outline: 3px solid var(--color-prioridad-alta);
+    outline-offset: 2px;
+}
+
+.visualmente-oculto {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    clip-path: inset(50%);
+}
+
+.modal-miembros {
+    width: min(100% - 2rem, 400px);
+    max-width: 400px;
+    max-height: min(80vh, 620px);
+    padding: 0;
+    border: 1px solid var(--color-bordes);
+    border-radius: var(--radio-tarjetas);
+    background-color: var(--color-superficies);
+    color: var(--color-texto-principal);
+    box-shadow: var(--sombra-modal);
+}
+
+.modal-miembros::backdrop {
+    background: rgba(28, 39, 58, 0.32);
+    backdrop-filter: blur(3px);
+}
+
+.modal-miembros form {
+    display: flex;
+    max-height: min(80vh, 620px);
+    flex-direction: column;
+}
+
+.modal-miembros-header,
+.modal-miembros-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--espacio-4) var(--espacio-5);
+}
+
+.modal-miembros-header {
+    border-bottom: 1px solid var(--color-bordes);
+}
+
+.modal-miembros-header h2 {
+    margin: 0;
+    font-size: var(--texto-base);
+}
+
+.modal-miembros-cerrar {
+    border: 0;
+    background: transparent;
+    color: var(--color-texto-principal);
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.modal-miembros-contenido {
+    overflow-y: auto;
+    padding: var(--espacio-4);
+}
+
+.modal-miembros-busqueda {
+    box-sizing: border-box;
+    width: 100%;
+    padding: var(--espacio-3);
+    border: 1px solid var(--color-bordes);
+    border-radius: var(--radio-inputs);
+    background-color: var(--color-fondo);
+    color: var(--color-texto-principal);
+    font: inherit;
+}
+
+.modal-miembros-contenido h3 {
+    margin: var(--espacio-4) 0 var(--espacio-2);
+    font-size: var(--texto-pequeño);
+    font-weight: var(--peso-semibold);
+}
+
+.modal-miembros-lista {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espacio-1);
+}
+
+.modal-miembros-opcion {
+    display: flex;
+    align-items: center;
+    gap: var(--espacio-3);
+    padding: var(--espacio-2);
+    border-radius: var(--radio-inputs);
+    cursor: pointer;
+}
+
+.modal-miembros-opcion[hidden] {
+    display: none;
+}
+
+.modal-miembros-opcion:hover,
+.modal-miembros-opcion:has(input:checked) {
+    background-color: var(--celesteClaro);
+}
+
+.modal-miembros-opcion input {
+    accent-color: var(--azul);
+}
+
+.modal-miembros-avatar {
+    display: grid;
+    width: 36px;
+    height: 36px;
+    flex: 0 0 36px;
+    place-items: center;
+    overflow: hidden;
+    border-radius: 50%;
+    background-color: var(--celesteMedio);
+    color: var(--color-texto-botones);
+    font-size: var(--texto-pequeño);
+    font-weight: var(--peso-semibold);
+}
+
+.modal-miembros-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.modal-miembros-datos {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.modal-miembros-datos strong {
+    font-size: var(--texto-secundario);
+}
+
+.modal-miembros-datos span {
+    overflow-wrap: anywhere;
+    color: var(--color-texto-placeholder);
+    font-size: var(--texto-pequeño);
+}
+
+.modal-miembros-footer {
+    justify-content: flex-end;
+    gap: var(--espacio-2);
+    border-top: 1px solid var(--color-bordes);
+}
+
+.modal-miembros-cancelar {
+    padding: var(--espacio-2) var(--espacio-3);
+    border: 0;
+    border-radius: var(--radio-botones);
+    background-color: var(--celesteClaro);
+    color: var(--azul);
+    font: inherit;
+    font-size: var(--texto-secundario);
+    cursor: pointer;
+}
+
+.modal-miembros-mensaje {
+    min-height: 1.2em;
+    margin: var(--espacio-2) 0 0;
+    color: var(--color-prioridad-alta);
+    font-size: var(--texto-pequeño);
+}
+
+@media (max-width: 760px) {
+    .contenido-principal {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: var(--espacio-4);
+    }
+
+    .acciones-principales {
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .acciones-principales .boton-agregar-miembro,
+    .acciones-principales .boton-eliminar-miembro {
+        flex: 1 1 auto;
+    }
+
+    .buscar-caja {
+        flex: 1;
+    }
+
+    .buscar-caja input {
+        box-sizing: border-box;
+        width: 100%;
+    }
+
+    .cuadriculas-tarjetas {
+        grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+    }
+
+    .modal-miembros-footer .boton-confirmar-eliminacion {
+        flex: 1;
+    }
+}
+ 
+/* ---------- Tema oscuro ---------- */
+/* Admin usa la paleta cruda (azul/celesteClaro), que no cambia sola con las variables.
+   Mismos valores que usás para .nav-item.activo en tema-oscuro.css.
+   Si preferís, mové estas reglas a tema-oscuro.css. */
+[data-tema="oscuro"] .rol-admin {
+    background-color: #243447;
+    color: var(--celesteMedio);
+}
+ 
+[data-tema="oscuro"] .rol-admin::before {
+    background-color: var(--celesteMedio);
+}

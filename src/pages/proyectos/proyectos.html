@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Master - Proyectos</title>
+    <link rel="stylesheet" href="/src/shared/css/variables.css">
+    <link rel="stylesheet" href="/src/shared/css/base.css">
+    <link rel="stylesheet" href="/src/shared/css/layout.css">
+    <link rel="stylesheet" href="/src/shared/css/componentes.css">
+    <link rel="stylesheet" href="/src/pages/proyectos/proyectos-style.css">
+    <script src="/src/shared/js/comun.js" defer></script>
+    <script type="module" src="/src/shared/js/sidebar-routes.js"></script>
+    <script src="/src/pages/proyectos/proyectos-datos.js" defer></script>
+    <script src="/src/pages/proyectos/proyectos.js" defer></script>
+</head>
+
+<body>
+
+
+    <!-- Barra lateral -->
+    <aside class="barra-lateral">
+        <div class="logo">
+
+            <div class="logo-icono">
+                <img src="/public/img/logo.jpeg" alt="Logo de Task Master">
+            </div>
+
+            <div>
+                <div class="logo-texto">Task Master</div>
+                <div class="gestion-eficiente">Gestión eficiente</div>
+            </div>
+        </div>
+
+        <nav class="menu">
+
+            <a class="nav-item" href="/panel-principal">Panel Principal</a>
+            <a class="nav-item" href="/proyectos">Proyectos</a>
+            <a class="nav-item" href="/tareas">Mis tareas</a>
+            <a class="nav-item" href="/calendario">Calendario</a>
+            <a class="nav-item" href="/miembros">Miembros</a>
+            <a class="nav-item" href="/configuracion">Configuración</a>
+        </nav>
+
+
+        <button class="boton-agregar-tarea">+ Nueva Tarea</button>
+
+        <div class="ayuda">Ayuda</div>
+
+    </aside>
+
+    <!-- Main -->
+
+    <main>
+        <div class="contenido-principal">
+            <div class="titulo-principal">Proyectos</div>
+            <div class="acciones-principales">
+                <div class="buscar-caja">
+                    <input type="text" id="buscador" placeholder="Buscar...">
+                </div>
+                <div class="icono-boton">Notificaciones</div>
+                <div class="icono-boton">Perfil</div>
+            </div>
+        </div>
+
+        <section class="panel proyecto-general" aria-labelledby="general-nombre">
+            <span class="etiqueta">PROYECTO GENERAL</span>
+            <h2 id="general-nombre">Nombre del proyecto</h2>
+            <p id="general-descripcion">Acá va la descripción del proyecto general.</p>
+
+            <div class="progreso">
+                <span>Progreso general</span>
+                <span>0%</span>
+            </div>
+            <div class="progreso-barra">
+                <div class="progreso-barra-porcentaje" style="width: 0%;"></div>
+            </div>
+        </section>
+
+        <section aria-labelledby="individuales-titulo">
+            <div class="panel-titulo">
+                <h2 id="individuales-titulo">Proyectos individuales</h2>
+                <button class="boton-accion" type="button" id="boton-agregar">+ Agregar proyecto</button>
+            </div>
+            <div id="lista-individuales" class="proyectos-lista"></div>
+        </section>
+
+        <dialog class="dialogo" id="dialogo-proyecto" aria-labelledby="dialogo-titulo">
+            <form class="formulario" id="form-proyecto">
+                <h2 id="dialogo-titulo">Agregar proyecto individual</h2>
+
+                <label for="campo-nombre">Nombre del proyecto</label>
+                <input type="text" id="campo-nombre" name="nombre" required maxlength="60">
+
+                <label for="campo-rol">Rol</label>
+                <input type="text" id="campo-rol" name="rol" required maxlength="40">
+
+                <label for="campo-responsable">Responsable</label>
+                <input type="text" id="campo-responsable" name="responsable" required maxlength="60">
+
+                <label for="campo-fecha">Fecha límite</label>
+                <input type="date" id="campo-fecha" name="fechaLimite" required>
+
+                <p class="form-error" id="form-error" role="alert"></p>
+
+                <div class="dialogo-botones">
+                    <button type="button" class="boton-ver-tareas" id="boton-cancelar">Cancelar</button>
+                    <button type="submit" class="boton-accion">Guardar</button>
+                </div>
+            </form>
+        </dialog>
+    </main>
+</body>
+
+</html>

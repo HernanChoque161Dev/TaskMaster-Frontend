@@ -1,4 +1,5 @@
 import { loginUsuario, registrarUsuario, autenticarConGoogle } from './api/login-service.js';
+import { irAPanelPrincipal } from '../../shared/js/sidebar-routes.js';
 
 // --- ELEMENTOS DEL DOM ---
 
@@ -108,9 +109,7 @@ formLogin?.addEventListener('submit', async (event) => {
 
         showAlert(loginAlert, '¡Inicio de sesión exitoso! Redirigiendo...', 'success');
 
-        setTimeout(() => {
-            window.location.href = '../panel-principal/panel-principal.html';
-        }, 600);
+        setTimeout(irAPanelPrincipal, 600);
     } catch (error) {
         showAlert(loginAlert, error.message || 'Error al iniciar sesión. Intenta nuevamente.', 'error');
         setButtonLoading(btnLogin, false, 'Iniciar sesión');
@@ -159,9 +158,7 @@ formRegister?.addEventListener('submit', async (event) => {
 
         showAlert(registerAlert, '¡Registro exitoso! Redirigiendo al panel...', 'success');
 
-        setTimeout(() => {
-            window.location.href = '../panel-principal/panel-principal.html';
-        }, 600);
+        setTimeout(irAPanelPrincipal, 600);
     } catch (error) {
         showAlert(registerAlert, error.message || 'Error al registrar usuario. Intenta nuevamente.', 'error');
         setButtonLoading(btnRegister, false, 'Crear cuenta');
@@ -196,9 +193,7 @@ export async function manejarRespuestaGoogle(response) {
         showAlert(loginAlert, '¡Autenticación con Google exitosa! Redirigiendo...', 'success');
         showAlert(registerAlert, '¡Autenticación con Google exitosa! Redirigiendo...', 'success');
 
-        setTimeout(() => {
-            window.location.href = '../panel-principal/panel-principal.html';
-        }, 600);
+        setTimeout(irAPanelPrincipal, 600);
     } catch (error) {
         console.error('Error en autenticación con Google:', error);
         showAlert(loginAlert, error.message || 'Error al autenticar con Google.', 'error');

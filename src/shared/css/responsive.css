@@ -1,0 +1,160 @@
+/* =====================================================
+   responsive.css  →  shared/css/responsive.css
+   PARTE COMPARTIDA: se enlaza en TODAS las pantallas.
+   Menú lateral deslizable, barra superior y desplegables.
+ 
+   Cargar DESPUÉS del CSS propio de cada pantalla
+   (ej: panel-principal-style.css), porque pisa algunas reglas.
+ 
+   Tu CSS está pensado para escritorio, así que acá se
+   "achica" con max-width. Breakpoints: 1024px y 640px.
+   ===================================================== */
+ 
+img { max-width: 100%; height: auto; }
+ 
+/* ---------- Elementos nuevos: ocultos en escritorio ---------- */
+.boton-menu-movil {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    border: 1px solid var(--color-bordes);
+    border-radius: 8px;
+    background-color: var(--color-superficies);
+    color: var(--color-texto-principal);
+    font-size: 1.4rem;
+    line-height: 1;
+    cursor: pointer;
+}
+ 
+.fondo-menu { display: none; }
+ 
+/* =====================================================
+   TABLET Y MENOR (≤ 1024px)
+   La barra lateral pasa a ser un menú deslizable.
+   ===================================================== */
+@media (max-width: 1024px) {
+ 
+    /* layout.css usa grid en el body (barra + contenido): lo anulamos */
+    body { display: block; }
+ 
+    /* Barra lateral fuera de pantalla, se desliza al abrir */
+    .barra-lateral {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        height: 100dvh;
+        width: var(--ancho-barralateral, 260px);
+        max-width: 85vw;
+        z-index: 1001;
+        overflow-y: auto;
+        transform: translateX(-100%);
+        transition: transform 0.25s ease;
+        /* Al flotar sobre el contenido necesita fondo propio (usa el tema claro/oscuro) */
+        background-color: var(--color-superficies);
+    }
+    body.menu-abierto .barra-lateral {
+        transform: translateX(0);
+        /* La sombra solo al abrir: cerrada, se filtraría por el borde izquierdo */
+        box-shadow: var(--sombra-modal);
+    }
+ 
+    /* Fondo oscuro detrás del menú */
+    .fondo-menu {
+        display: block;
+        position: fixed;
+        inset: 0;
+        z-index: 1000;
+        background: rgba(0, 0, 0, 0.45);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.25s ease;
+    }
+    body.menu-abierto .fondo-menu { opacity: 1; pointer-events: auto; }
+    body.menu-abierto { overflow: hidden; }
+ 
+    /* El contenido ocupa todo el ancho (ya no hay barra al costado) */
+    main {
+        width: 100%;
+        max-width: 100%;
+        padding: var(--espacio-4);
+    }
+ 
+    .boton-menu-movil { display: inline-flex; }
+ 
+    /* Barra superior: hamburguesa + título + acciones */
+    .contenido-principal {
+        flex-wrap: wrap;
+        gap: var(--espacio-3);
+        justify-content: flex-start;
+    }
+    .titulo-principal { flex: 1; min-width: 0; }
+    .acciones-principales {
+        flex: 1 1 280px;
+        gap: var(--espacio-2);
+        justify-content: flex-end;
+    }
+    .buscar-caja { flex: 1; min-width: 0; }
+    .buscar-caja input { width: 100%; }
+ 
+    /* Desplegables nunca más anchos que la pantalla.
+       (componentes.css les pone min-width de 18rem / 22rem, hay que pisarlo) */
+    .desplegable {
+        min-width: min(18rem, calc(100vw - 2rem));
+        max-width: calc(100vw - 2rem);
+    }
+    .desplegable-notificaciones {
+        min-width: min(22rem, calc(100vw - 2rem));
+        width: min(22rem, calc(100vw - 2rem));
+        max-height: 70vh;
+        overflow-y: auto;
+    }
+    .desplegable-titulo { flex-wrap: wrap; gap: var(--espacio-1) var(--espacio-3); }
+}
+ 
+/* =====================================================
+   CELULAR (≤ 640px)
+   ===================================================== */
+@media (max-width: 640px) {
+ 
+    /* Espacio abajo para que el botón flotante de tema no tape contenido */
+    main { padding: var(--espacio-3) var(--espacio-3) 5rem; }
+ 
+    /* Buscador e iconos pasan a su propia fila, a todo el ancho */
+    .acciones-principales {
+        order: 3;
+        flex: 1 1 100%;
+        position: relative;
+    }
+ 
+    /* Desplegables: se anclan a la fila de acciones (ancho completo) y no al
+       botón, que en celular queda lejos del borde y los cortaría */
+    .menu-desplegable { position: static; }
+    .desplegable,
+    .desplegable-notificaciones {
+        left: 0;
+        right: 0;
+        width: auto;
+        min-width: 0;
+        max-width: none;
+    }
+}
+ 
+/* =====================================================
+   TÁCTIL: zonas de toque cómodas (≥ 44px)
+   ===================================================== */
+@media (pointer: coarse) {
+    .nav-item { min-height: 44px; display: flex; align-items: center; }
+    .icono-boton { min-width: 44px; min-height: 44px; }
+    .desplegable-item,
+    .notificacion { min-height: 44px; }
+}
+ 
+/* En táctil no existe el hover: evita que quede "levantado" tras tocarlo */
+@media (hover: none) {
+    .boton-tema-flotante:hover { transform: none; }
+}

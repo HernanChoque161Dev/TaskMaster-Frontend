@@ -4,15 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cargando TaskMaster...</title>
-    <!-- Redirección automática vía HTML (fallback) -->
-    <meta http-equiv="refresh" content="0; url=src/pages/login/login.html">
+    <title>Cargando Task Master...</title>
+    <!-- Fallback sin JavaScript: ruta física del login (válida en cualquier entorno) -->
+    <noscript>
+        <meta http-equiv="refresh" content="0; url=/src/pages/login/login.html">
+    </noscript>
 </head>
 
 <body>
-    <!-- Redirección inmediata vía JavaScript -->
+    <!-- Redirección inmediata: URL limpia en producción (Netlify), ruta física en localhost -->
     <script>
-        window.location.replace('src/pages/login/login.html');
+        const esDesarrollo = ['localhost', '127.0.0.1'].includes(window.location.hostname);
+        window.location.replace(esDesarrollo ? '/src/pages/login/login.html' : '/login');
     </script>
 </body>
 

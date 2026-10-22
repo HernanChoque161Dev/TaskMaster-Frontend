@@ -1,0 +1,66 @@
+.proyecto-general {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espacio-3);
+}
+
+.proyecto-general h2 {
+    color: var(--azul);
+}
+
+.estado-vacio {
+    padding: var(--espacio-6);
+    text-align: center;
+    color: var(--azul);
+    border: 2px dashed var(--celesteMedio);
+    border-radius: var(--radio-tarjetas);
+}
+
+.dialogo {
+    border: none;
+    border-radius: var(--radio-tarjetas);
+    box-shadow: var(--sombra-modal);
+    padding: var(--espacio-6);
+    width: min(90vw, 28rem);
+    margin: auto;
+}
+
+.dialogo::backdrop {
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espacio-2);
+}
+
+.formulario h2 {
+    color: var(--azul);
+    margin-bottom: var(--espacio-2);
+}
+
+.formulario label {
+    font-size: var(--texto-secundario);
+    font-weight: var(--peso-medio);
+}
+
+.formulario input {
+    padding: var(--espacio-2) var(--espacio-3);
+    border: 1px solid var(--color-bordes);
+    border-radius: var(--radio-inputs);
+    font-family: inherit;
+    font-size: var(--texto-base);
+}
+
+.form-error {
+    color: var(--color-prioridad-alta);
+    font-size: var(--texto-secundario);
+    min-height: 1.25rem;
+}
+
+.dialogo-botones {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--espacio-3);
+}

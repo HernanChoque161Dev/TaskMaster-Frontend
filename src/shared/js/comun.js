@@ -12,13 +12,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    /* BOTÓN NUEVA TAREA */
-    const botonNuevaTarea = document.querySelector(".boton-agregar-tarea");
-    if (botonNuevaTarea) {
-        botonNuevaTarea.addEventListener("click", () => {
-            window.location.href = "../tareas/tareas.html";
-        });
-    }
+    /* BOTÓN NUEVA TAREA: la navegación la gestiona shared/js/sidebar-routes.js (rutas absolutas / URLs limpias) */
 
 });
 /* NOTIFICACIONES Y PERFIL (DESpLEGABLES) */
@@ -26,7 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
 document.addEventListener("click", function (e) {
     var boton = e.target.closest("[data-desplegable]");
 
-// Click dentro de un panel abierto 
+    // Click dentro de un panel abierto 
     if (!boton && e.target.closest(".desplegable")) return;
 
     document.querySelectorAll(".menu-desplegable").forEach(function (menu) {

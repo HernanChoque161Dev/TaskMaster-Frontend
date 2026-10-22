@@ -1,0 +1,21 @@
+# ============================================================================
+# Task Master - Reescritura de URLs (Netlify)
+# ----------------------------------------------------------------------------
+# Estado 200 = rewrite interno: Netlify sirve el HTML indicado pero el
+# navegador conserva la URL corta (ej. /configuracion).
+# Las query strings (?token=...) se preservan automaticamente.
+# Las paginas deben referenciar sus recursos con rutas absolutas (/src/...,
+# /public/...) porque las rutas relativas se resuelven contra la URL corta.
+# Especificacion completa: Implementacion-URL.md
+# ============================================================================
+
+/login                    /src/pages/login/login.html                                  200
+/panel-principal          /src/pages/panel-principal/panel-principal.html              200
+/proyectos                /src/pages/proyectos/proyectos.html                          200
+/miembros                 /src/pages/miembros/miembros.html                            200
+/configuracion            /src/pages/configuracion/configuracion.html                  200
+/cambiar-clave-usuario    /src/pages/cambiar-clave-usuario/cambiar-clave-usuario.html  200
+
+# Paginas planificadas (aun sin implementar: responden 404 hasta que existan)
+/tareas                   /src/pages/tareas/tareas.html                                200
+/calendario               /src/pages/calendario/calendario.html                        200

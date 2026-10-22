@@ -5,17 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task Master - Panel Principal</title>
-    <link rel="icon" type="image/x-icon" href="../../../public/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="/public/favicon.ico">
 
-    <link rel="stylesheet" href="../../shared/css/variables.css">
-    <link rel="stylesheet" href="../../shared/css/base.css">
-    <link rel="stylesheet" href="../../shared/css/layout.css">
-    <link rel="stylesheet" href="../../shared/css/componentes.css">
-    <link rel="stylesheet" href="../../shared/css/tema-oscuro.css">
-    <link rel="stylesheet" href="panel-principal-style.css">
-    <script src="../../shared/js/tema.js"></script>
-    <script src="../../shared/js/comun.js" defer></script>
-    <script type="module" src="panel-principal.js"></script>
+    <link rel="stylesheet" href="/src/shared/css/variables.css">
+    <link rel="stylesheet" href="/src/shared/css/base.css">
+    <link rel="stylesheet" href="/src/shared/css/layout.css">
+    <link rel="stylesheet" href="/src/shared/css/componentes.css">
+    <link rel="stylesheet" href="/src/shared/css/tema-oscuro.css">
+    <link rel="stylesheet" href="/src/shared/css/responsive.css">
+    <link rel="stylesheet" href="/src/pages/panel-principal/panel-principal-style.css">
+    <link rel="stylesheet" href="/src/shared/css/responsive.css">
+    <link rel="stylesheet" href="/src/pages/panel-principal/responsive-panel.css">
+    <script src="/src/shared/js/tema.js"></script>
+    <script src="/src/shared/js/comun.js" defer></script>
+    <script src="/src/shared/js/menu-movil.js" defer></script>
+    <script type="module" src="/src/shared/js/sidebar-routes.js"></script>
+    <script type="module" src="/src/pages/panel-principal/panel-principal.js" defer></script>
 
 
 </head>
@@ -38,12 +43,12 @@
 
         <nav class="menu">
 
-            <a class="nav-item" href="../panel-principal/panel-principal.html">Panel Principal</a>
-            <a class="nav-item" href="../proyectos/proyectos.html">Proyectos</a>
-            <a class="nav-item" href="../tareas/areas.html">Mis tareas</a>
-            <a class="nav-item" href="../calendario/calendario.html">Calendario</a>
-            <a class="nav-item" href="../miembros/miembros.html">Miembros</a>
-            <a class="nav-item" href="../configuracion/configuracion.html">Configuración</a>
+            <a class="nav-item" href="/panel-principal">Panel Principal</a>
+            <a class="nav-item" href="/proyectos">Proyectos</a>
+            <a class="nav-item" href="/tareas">Mis tareas</a>
+            <a class="nav-item" href="/calendario">Calendario</a>
+            <a class="nav-item" href="/miembros">Miembros</a>
+            <a class="nav-item" href="/configuracion">Configuración</a>
         </nav>
 
         <button class="boton-agregar-tarea">+ Nueva Tarea</button>
@@ -117,10 +122,11 @@
                         </div>
                         <hr>
                         <a class="desplegable-item" href="#">Gestionar cuenta</a>
-                        <a class="desplegable-item" href="../configuracion/configuracion.html">Configuración</a>
+                        <a class="desplegable-item" href="/configuracion">Configuración</a>
                         <a class="desplegable-item" href="#">Ayuda</a>
                         <hr>
-                        <button type="button" class="desplegable-item boton-cerrar-sesion-desplegable" id="enlaceCerrarSesion">Cerrar sesión</button>
+                        <button type="button" class="desplegable-item boton-cerrar-sesion-desplegable"
+                            id="enlaceCerrarSesion">Cerrar sesión</button>
                     </div>
                 </div>
             </div>
@@ -131,6 +137,7 @@
                 <p>Aquí tienes el resumen de tu semana productiva.</p>
             </div>
             <button class="boton-accion">+ Nuevo Proyecto</button>
+        </div>
         </div>
 
         <!---Tarjetas-->
@@ -173,7 +180,7 @@
             <section class="panel">
                 <div class="panel-titulo">
                     <h2>Mis proyectos</h2>
-                    <a href="proyectos.html" class="ver-todos">Ver todos</a>
+                    <a href="/proyectos" class="ver-todos">Ver todos</a>
                 </div>
 
                 <div class="proyectos-lista">

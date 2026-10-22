@@ -1,0 +1,79 @@
+/* =====================================================
+   responsive-panel.css  →  panel-principal/responsive-panel.css
+   SOLO lo propio del PANEL PRINCIPAL: tarjetas de estadísticas,
+   grilla de proyectos/vencimientos y encabezado con saludo.
+ 
+   Se carga DESPUÉS de shared/css/responsive.css.
+   ===================================================== */
+ 
+/* Textos largos no deben romper el ancho de las tarjetas */
+.proyecto-nombre,
+.proyecto-descripcion,
+.vencimiento-titulo { overflow-wrap: anywhere; }
+ 
+.proyecto-top { gap: var(--espacio-2); }
+.proyecto-nombre { min-width: 0; }
+ 
+/* =====================================================
+   TABLET Y MENOR (≤ 1024px)
+   ===================================================== */
+@media (max-width: 1024px) {
+ 
+    /* Tarjetas de estadísticas: 4 → 2 columnas */
+    .cuadriculas-tarjetas {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+ 
+    /* Proyectos + vencimientos: lado a lado → apilados */
+    .grilla-contenido {
+        grid-template-columns: minmax(0, 1fr);
+    }
+}
+ 
+/* =====================================================
+   CELULAR (≤ 640px)
+   ===================================================== */
+@media (max-width: 640px) {
+ 
+    /* Saludo y botón "Nuevo Proyecto" apilados */
+    .encabezado-panel {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    /* Mismo selector que panel-principal-style.css (width:auto), si no, no gana */
+    .encabezado-panel .boton-accion {
+        width: 100%;
+        align-self: stretch;
+        min-height: 44px;
+    }
+ 
+    .cuadriculas-tarjetas { gap: var(--espacio-3); }
+ 
+    /* Que "Ver todos" no se desborde del título del panel */
+    .panel-titulo,
+    .panel-header { flex-wrap: wrap; gap: var(--espacio-2); }
+ 
+    .boton-ver-tareas { min-height: 44px; }
+ 
+    /* Tarjetas con menos relleno para ganar espacio */
+    .tarjetas,
+    .panel,
+    .tarjeta-proyecto { padding: var(--espacio-4); }
+}
+ 
+/* Pantallas muy chicas: tarjetas de estadísticas de a una */
+@media (max-width: 380px) {
+    .cuadriculas-tarjetas { grid-template-columns: minmax(0, 1fr); }
+}
+ 
+/* =====================================================
+   TÁCTIL
+   ===================================================== */
+@media (pointer: coarse) {
+    .boton-menu { min-width: 44px; min-height: 44px; }
+    .checkbox-tarea { width: 22px; height: 22px; }
+}
+ 
+@media (hover: none) {
+    .tarjeta-proyecto:hover { transform: none; }
+}

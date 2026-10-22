@@ -1,8 +1,15 @@
+/**
+ * @fileoverview Controlador de interfaz para el Panel Principal de TaskMaster.
+ * @module pages/panel-principal
+ * @description Gestiona la interacción del dashboard, listado de proyectos, métricas de tareas y cierre de sesión seguro.
+ */
+
 import { logoutUsuario } from './api/panel-principal-service.js';
+import { irAProyectos, irATareas, reemplazarA, PAGINAS } from '../../shared/js/sidebar-routes.js';
 
 /* GUARDA DE SESIÓN: sin token no se puede ver el panel */
 if (!localStorage.getItem('auth_token')) {
-    window.location.replace('../login/login.html');
+    reemplazarA(PAGINAS.LOGIN);
 }
 
 /**
@@ -20,12 +27,8 @@ function obtenerUsuarioGuardado() {
 document.addEventListener("DOMContentLoaded", () => {
 
     /* BOTONES */
-    document.querySelector(".boton-accion").addEventListener("click", () => {
-        window.location.href = "../proyectos/proyectos.html";
-    });
-    document.querySelector(".boton-ver-tareas").addEventListener("click", () => {
-        window.location.href = "../tareas/tareas.html";
-    });
+    document.querySelector(".boton-accion")?.addEventListener("click", irAProyectos);
+    document.querySelector(".boton-ver-tareas")?.addEventListener("click", irATareas);
 
     /*Checkbox */
 
@@ -152,20 +155,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /* EDITAR PROYECTO */
     document.querySelectorAll(".opcion-editar").forEach((boton) => {
-        boton.addEventListener("click", () => {
-            window.location.href = "../proyectos/proyectos.html";
-        });
-
+        boton.addEventListener("click", irAProyectos);
     });
 
 });
-
-
-
-
-
-
-
 
 
 
@@ -220,7 +213,7 @@ async function cerrarSesion(event) {
         localStorage.removeItem('auth_token');
         localStorage.removeItem('usuario');
         sessionStorage.clear();
-        window.location.replace('../login/login.html');
+        reemplazarA(PAGINAS.LOGIN);
     }
 }
 
