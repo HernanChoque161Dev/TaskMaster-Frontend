@@ -216,43 +216,6 @@
 }
 
 @media (max-width: 760px) {
-  body {
-    display: block;
-    overflow-x: hidden;
-  }
-
-  .barra-lateral {
-    position: static;
-    width: 100%;
-    height: auto;
-    padding: var(--espacio-4);
-  }
-
-  .logo-icono {
-    width: 56px;
-    height: 56px;
-  }
-
-  .menu {
-    margin-top: var(--espacio-4);
-    flex: none;
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .barra-lateral .boton-agregar-tarea,
-  .barra-lateral .ayuda {
-    margin-top: var(--espacio-3);
-  }
-
-  main {
-    padding: var(--espacio-4);
-  }
-
-  main > h1 {
-    display: block;
-  }
-
   .contenedor-configuracion {
     grid-template-columns: minmax(0, 1fr);
   }

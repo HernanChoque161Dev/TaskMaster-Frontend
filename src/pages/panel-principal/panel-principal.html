@@ -14,7 +14,6 @@
     <link rel="stylesheet" href="/src/shared/css/tema-oscuro.css">
     <link rel="stylesheet" href="/src/shared/css/responsive.css">
     <link rel="stylesheet" href="/src/pages/panel-principal/panel-principal-style.css">
-    <link rel="stylesheet" href="/src/shared/css/responsive.css">
     <link rel="stylesheet" href="/src/pages/panel-principal/responsive-panel.css">
     <script src="/src/shared/js/tema.js"></script>
     <script src="/src/shared/js/comun.js" defer></script>
@@ -28,7 +27,7 @@
 <body>
 
     <!-- Barra lateral -->
-    <aside class="barra-lateral">
+    <aside class="barra-lateral" id="barra-lateral">
         <div class="logo">
 
             <div class="logo-icono">
@@ -55,6 +54,7 @@
 
         <a class="ayuda" href="">Ayuda</a> <!--agregar link a ayuda.html cuando este-->
     </aside>
+    <div class="fondo-menu" aria-hidden="true"></div>
 
     <label class="boton-tema-flotante" title="Cambiar tema">
         <input type="checkbox" id="toggle-tema" aria-label="Modo oscuro">
@@ -67,6 +67,8 @@
         <div class="contenido-principal">
             <div class="titulo-principal">Panel Principal</div>
             <div class="acciones-principales">
+                <button type="button" class="boton-menu-movil" aria-label="Abrir menú" aria-controls="barra-lateral"
+                    aria-expanded="false">☰</button>
                 <div class="buscar-caja">
                     <input type="text" id="buscador" placeholder="Buscar...">
                 </div>

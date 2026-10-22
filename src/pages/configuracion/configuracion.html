@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/src/shared/css/layout.css">
     <link rel="stylesheet" href="/src/shared/css/componentes.css">
     <link rel="stylesheet" href="/src/shared/css/tema-oscuro.css">
+    <link rel="stylesheet" href="/src/shared/css/responsive.css">
     <link rel="stylesheet" href="/src/pages/panel-principal/panel-principal-style.css">
     <link rel="stylesheet" href="/src/pages/configuracion/configuracion.css">
     <script src="/src/shared/js/tema.js"></script>
@@ -20,13 +21,11 @@
 
 <body>
     <!-- Barra lateral -->
-    <aside class="barra-lateral">
+    <aside class="barra-lateral" id="barra-lateral">
         <div class="logo">
-
             <div class="logo-icono">
                 <img src="/public/img/logo1.png" alt="Logo de Task Master">
             </div>
-
             <div>
                 <div class="logo-texto">Task Master</div>
                 <div class="gestion-eficiente">Gestión eficiente</div>
@@ -34,29 +33,37 @@
         </div>
 
         <nav class="menu">
-
             <a class="nav-item" href="/panel-principal">Panel Principal</a>
             <a class="nav-item" href="/proyectos">Proyectos</a>
             <a class="nav-item" href="/tareas">Mis tareas</a>
             <a class="nav-item" href="/calendario">Calendario</a>
             <a class="nav-item" href="/miembros">Miembros</a>
             <a class="nav-item activo" href="/configuracion" aria-current="page">Configuración</a>
+
         </nav>
 
         <button class="boton-agregar-tarea">+ Nueva Tarea</button>
-
-        <div class="ayuda">Ayuda</div>
+        <a class="ayuda" href="">Ayuda</a> <!--agregar link a ayuda.html cuando este-->
 
     </aside>
+    <div class="fondo-menu" aria-hidden="true"></div>
 
     <label class="boton-tema-flotante" title="Cambiar tema">
         <input type="checkbox" id="toggle-tema" aria-label="Modo oscuro">
         <span class="icono-tema" aria-hidden="true"></span>
     </label>
+
     <!-- MAIN -->
     <main>
+        <div class="contenido-principal">
+            <div class="acciones-principales">
+                <button type="button" class="boton-menu-movil" aria-label="Abrir menú" aria-controls="barra-lateral"
+                    aria-expanded="false">☰</button>
+                <h1 class="titulo-principal">Configuración</h1>
 
-        <h1>Configuración</h1>
+            </div>
+
+        </div>
 
         <div class="contenedor-configuracion">
 
