@@ -215,6 +215,57 @@
   border-color: var(--celesteClaro);
 }
 
+/* Botón deshabilitado durante una petición en curso. */
+.boton-configuracion:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Mensaje de estado bajo cada formulario (éxito o error devuelto por la API). */
+.tarjconfiguracion .mensaje-configuracion {
+  margin: var(--espacio-2) 0 0;
+  font-size: var(--texto-secundario);
+  font-weight: var(--peso-medio);
+  line-height: 1.4;
+}
+
+.mensaje-configuracion[hidden] {
+  display: none;
+}
+
+.mensaje-configuracion.exito {
+  color: var(--color-prioridad-baja);
+}
+
+.mensaje-configuracion.error {
+  color: var(--color-prioridad-alta);
+}
+
+/* Campo marcado como inválido tras un error de validación. */
+.tarjconfiguracion input.campo-invalido {
+  border-color: var(--color-prioridad-alta);
+}
+
+/* Aviso emergente para errores del guardado silencioso de preferencias. */
+.toast-configuracion {
+  position: fixed;
+  right: var(--espacio-6);
+  bottom: var(--espacio-6);
+  z-index: 1000;
+  max-width: min(360px, calc(100vw - 2 * var(--espacio-6)));
+  padding: var(--espacio-3) var(--espacio-4);
+  border-radius: var(--radio-botones);
+  background: var(--color-prioridad-alta);
+  color: var(--blanco);
+  font-size: var(--texto-secundario);
+  font-weight: var(--peso-medio);
+  box-shadow: var(--sombra-modal);
+}
+
+.toast-configuracion[hidden] {
+  display: none;
+}
+
 @media (max-width: 760px) {
   .contenedor-configuracion {
     grid-template-columns: minmax(0, 1fr);

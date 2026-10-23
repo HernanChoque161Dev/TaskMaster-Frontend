@@ -11,6 +11,11 @@
  * Debe cargarse como módulo: `<script type="module" src="/src/shared/js/sidebar-routes.js"></script>`.
  */
 
+import { protegerPagina } from './seguridad.js';
+
+// Verificación y protección inmediata de rutas privadas
+protegerPagina();
+
 /**
  * Diccionario de identificadores y nombres canónicos de páginas de la aplicación.
  * @readonly

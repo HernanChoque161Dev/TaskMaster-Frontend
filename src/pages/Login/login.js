@@ -1,5 +1,6 @@
 import { loginUsuario, registrarUsuario, autenticarConGoogle } from './api/login-service.js';
 import { irAPanelPrincipal } from '../../shared/js/sidebar-routes.js';
+import { consumirMensajeAuth } from '../../shared/js/seguridad.js';
 
 // --- ELEMENTOS DEL DOM ---
 
@@ -58,6 +59,20 @@ function setButtonLoading(button, isLoading, defaultText, loadingText = 'Procesa
     if (!button) return;
     button.disabled = isLoading;
     button.textContent = isLoading ? loadingText : defaultText;
+}
+
+// --- VERIFICACIÓN DE SESIÓN EXPIRADA / ACCESO RESTRINGIDO ---
+function verificarMensajeSesionExpirada() {
+    const mensajeSesion = consumirMensajeAuth();
+    if (mensajeSesion) {
+        showAlert(loginAlert, mensajeSesion, 'error');
+    }
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', verificarMensajeSesionExpirada);
+} else {
+    verificarMensajeSesionExpirada();
 }
 
 // --- CONTROL DE ANIMACIÓN Y TRANSICIÓN ENTRE PANELES ---
@@ -199,4 +214,9 @@ export async function manejarRespuestaGoogle(response) {
         showAlert(loginAlert, error.message || 'Error al autenticar con Google.', 'error');
         showAlert(registerAlert, error.message || 'Error al autenticar con Google.', 'error');
     }
+}
+
+// Exponer la función de callback en el ámbito global para Google Identity Services
+if (typeof window !== 'undefined') {
+    window.manejarRespuestaGoogle = manejarRespuestaGoogle;
 }

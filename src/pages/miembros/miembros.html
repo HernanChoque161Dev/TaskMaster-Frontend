@@ -4,7 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/public/favicon.ico">
+
+
     <title>Miembros</title>
+
     <link rel="stylesheet" href="/src/shared/css/variables.css">
     <link rel="stylesheet" href="/src/shared/css/base.css">
     <link rel="stylesheet" href="/src/shared/css/layout.css">
@@ -67,11 +71,12 @@
             <div class="encabezado-miembros">
                 <p class="subtitulo">Gestiona el acceso y los roles de tu equipo</p>
             </div>
+            <div class="buscar-caja">
+                <input type="search" id="buscador" aria-label="Buscar miembro" placeholder="Buscar miembro...">
+            </div>
             <div class="acciones-principales">
 
-                <div class="buscar-caja">
-                    <input type="search" id="buscador" aria-label="Buscar miembro" placeholder="Buscar miembro...">
-                </div>
+
                 <button class="boton-agregar-miembro" type="button">Agregar miembro</button>
                 <button class="boton-eliminar-miembro" id="boton-eliminar-miembro" type="button">Eliminar
                     miembro</button>

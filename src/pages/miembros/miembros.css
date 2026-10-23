@@ -8,7 +8,7 @@
     grid-column: 1;
     grid-row: 1;
 }
- 
+
 main {
     grid-column: 2;
     grid-row: 1;
@@ -54,7 +54,7 @@ main {
     line-height: 1;
 }
 
-.boton-tema-flotante input:checked + .icono-tema::before {
+.boton-tema-flotante input:checked+.icono-tema::before {
     content: "☀";
 }
 
@@ -65,12 +65,13 @@ main {
 .encabezado-miembros {
     min-width: 0;
 }
- 
+
 .subtitulo {
     margin-top: var(--espacio-2);
     font-size: var(--texto-base);
     color: var(--color-texto-subtitulos);
 }
+
 /* El input ya tiene borde, radio y fondo en componentes.css; acá solo tamaño e ícono */
 .buscar-caja input {
     width: 16rem;
@@ -79,14 +80,14 @@ main {
     background-repeat: no-repeat;
     background-position: 0.75rem center;
 }
- 
+
 /* ---------- Cuadrícula ---------- */
 /* layout.css la define en 4 columnas fijas (para estadísticas);
    acá se adapta al ancho porque son tarjetas más anchas */
 .cuadriculas-tarjetas {
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 }
- 
+
 /* .tarjetas ya aporta fondo, radio, sombra, padding y flex en columna */
 .tarjeta-miembro {
     gap: var(--espacio-4);
@@ -105,7 +106,7 @@ main {
     padding-bottom: var(--espacio-4);
     border-bottom: 1px solid var(--color-bordes);
 }
- 
+
 /* .avatar de componentes.css es de 28px: versión grande para esta pantalla */
 .avatar-grande {
     width: 48px;
@@ -115,23 +116,23 @@ main {
     object-fit: cover;
     font-size: var(--texto-base);
 }
- 
+
 .miembro-correo {
     font-size: var(--texto-secundario);
     color: var(--color-texto-placeholder);
 }
- 
+
 .miembro-pie {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
- 
+
 .ultimo-acceso {
     font-size: var(--texto-secundario);
     color: var(--color-texto-placeholder);
 }
- 
+
 /* ---------- Roles ---------- */
 /* No uso .etiqueta porque componentes.css ya la usa para las estadísticas */
 .rol {
@@ -143,12 +144,12 @@ main {
     font-size: var(--texto-pequeño);
     font-weight: var(--peso-semibold);
 }
- 
+
 .rol-admin {
     color: var(--azul);
     background-color: var(--celesteClaro);
 }
- 
+
 .rol-admin::before {
     content: "";
     width: 8px;
@@ -156,14 +157,14 @@ main {
     border-radius: 50%;
     background-color: var(--azul);
 }
- 
+
 /* Con contorno en vez de relleno: funciona igual en claro y oscuro */
 .rol-editor {
     color: var(--color-texto-principal);
     background-color: transparent;
     border: 1px solid var(--color-bordes);
 }
- 
+
 /* Reutiliza la paleta de prioridad media (naranja); cambiala si tenés una variable de rol.
    --color-prioridad-media-fondo solo existe en tema-oscuro.css, por eso el valor de respaldo
    para el tema claro (ver nota: conviene agregarla a variables.css). */
@@ -422,6 +423,7 @@ main {
 
     .buscar-caja {
         flex: 1;
+        width: 100%;
     }
 
     .buscar-caja input {
@@ -437,7 +439,7 @@ main {
         flex: 1;
     }
 }
- 
+
 /* ---------- Tema oscuro ---------- */
 /* Admin usa la paleta cruda (azul/celesteClaro), que no cambia sola con las variables.
    Mismos valores que usás para .nav-item.activo en tema-oscuro.css.
@@ -446,7 +448,7 @@ main {
     background-color: #243447;
     color: var(--celesteMedio);
 }
- 
+
 [data-tema="oscuro"] .rol-admin::before {
     background-color: var(--celesteMedio);
 }

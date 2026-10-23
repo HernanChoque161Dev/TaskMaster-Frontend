@@ -6,11 +6,10 @@
 
 import { logoutUsuario } from './api/panel-principal-service.js';
 import { irAProyectos, irATareas, reemplazarA, PAGINAS } from '../../shared/js/sidebar-routes.js';
+import { protegerPagina } from '../../shared/js/seguridad.js';
 
-/* GUARDA DE SESIÓN: sin token no se puede ver el panel */
-if (!localStorage.getItem('auth_token')) {
-    reemplazarA(PAGINAS.LOGIN);
-}
+/* GUARDA DE SESIÓN: valida autenticidad y vigencia del token */
+protegerPagina();
 
 /**
  * Obtiene el usuario autenticado guardado en el login.

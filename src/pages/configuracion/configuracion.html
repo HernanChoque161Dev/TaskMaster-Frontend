@@ -4,7 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/public/favicon.ico">
+
     <title>Configuración</title>
+
     <link rel="stylesheet" href="/src/shared/css/variables.css">
     <link rel="stylesheet" href="/src/shared/css/base.css">
     <link rel="stylesheet" href="/src/shared/css/layout.css">
@@ -17,6 +20,7 @@
     <script src="/src/shared/js/comun.js" defer></script>
     <script src="/src/shared/js/menu-movil.js" defer></script>
     <script type="module" src="/src/shared/js/sidebar-routes.js"></script>
+    <script type="module" src="/src/pages/configuracion/configuracion.js" defer></script>
 </head>
 
 <body>
@@ -69,12 +73,13 @@
             <div class="tarjconfiguracion">
                 <h2>Perfil</h2>
                 <p>Gestiona tu información personal y como te ven otros usuarios.</p>
-                <form>
+                <form id="form-perfil" novalidate>
                     <label for="nombre">Nombre completo</label>
-                    <input type="text" id="nombre" name="nombre">
+                    <input type="text" id="nombre" name="nombre" maxlength="100" autocomplete="name">
                     <label for="correo">Correo electrónico</label>
-                    <input type="email" id="correo" name="correo">
-                    <button type="submit" class="boton-configuracion">Guardar cambios</button>
+                    <input type="email" id="correo" name="correo" maxlength="55" autocomplete="email">
+                    <p class="mensaje-configuracion" id="mensaje-perfil" role="status" aria-live="polite" hidden></p>
+                    <button type="submit" class="boton-configuracion" id="btn-guardar-perfil">Guardar cambios</button>
                 </form>
             </div>
 
@@ -112,20 +117,29 @@
             <div class="tarjconfiguracion">
                 <h2>Seguridad</h2>
                 <p>Cambia tu contraseña y ajusta la configuración de seguridad de tu cuenta.</p>
-                <form>
-                    <label for="contraseña">Contraseña actual:</label>
-                    <input type="password" id="contraseña" name="contraseña" placeholder="Contraseña actual">
-                    <label for="nueva-contraseña">Nueva contraseña:</label>
-                    <input type="password" id="nueva-contraseña" name="nueva-contraseña" placeholder="Nueva contraseña">
-                    <label for="confirmar-contraseña">Confirmar nueva contraseña:</label>
-                    <input type="password" id="confirmar-contraseña" name="confirmar-contraseña"
-                        placeholder="Confirmar nueva contraseña">
-                    <button type="submit" class="boton-configuracion">Cambiar contraseña</button>
+                <form id="form-password" novalidate>
+                    <label for="contrasena-actual">Contraseña actual:</label>
+                    <input type="password" id="contrasena-actual" name="contrasena-actual"
+                        placeholder="Contraseña actual" autocomplete="current-password">
+                    <label for="contrasena-nueva">Nueva contraseña:</label>
+                    <input type="password" id="contrasena-nueva" name="contrasena-nueva"
+                        placeholder="Nueva contraseña (mínimo 8 caracteres)" autocomplete="new-password">
+                    <label for="contrasena-confirmar">Confirmar nueva contraseña:</label>
+                    <input type="password" id="contrasena-confirmar" name="contrasena-confirmar"
+                        placeholder="Confirmar nueva contraseña" autocomplete="new-password">
+                    <p class="mensaje-configuracion" id="mensaje-password" role="status" aria-live="polite" hidden></p>
+                    <button type="submit" class="boton-configuracion" id="btn-cambiar-password">Cambiar
+                        contraseña</button>
                 </form>
 
-                <button type="button" class="boton-configuracion boton-secundario">Cerrar sesión</button>
+                <button type="button" class="boton-configuracion boton-secundario" id="btn-cerrar-sesion">Cerrar
+                    sesión</button>
             </div>
         </div>
+
+        <!-- Aviso emergente (errores del guardado silencioso de preferencias) -->
+        <div class="toast-configuracion" id="toast-configuracion" role="alert" aria-live="assertive" hidden></div>
+    </main>
 </body>
 
 </html>
