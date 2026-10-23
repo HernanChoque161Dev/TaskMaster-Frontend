@@ -156,7 +156,7 @@ img {
 
     /* Espacio abajo para que el botón flotante de tema no tape contenido */
     main {
-        padding: var(--espacio-3) var(--espacio-3) 5rem;
+        padding: var(--espacio-5) var(--espacio-4) 5rem;
     }
 
     /* Buscador e iconos pasan a su propia fila, a todo el ancho */

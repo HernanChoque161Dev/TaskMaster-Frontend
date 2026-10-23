@@ -1,3 +1,9 @@
+/**
+ * @fileoverview Controlador de interfaz para la vista de proyectos.
+ * @module proyectos/ui
+ * @description Renderiza el proyecto general, lista de subproyectos individuales y gestiona el modal de alta de proyectos.
+ */
+
 document.addEventListener("DOMContentLoaded", () => {
     mostrarProyectoGeneral();
     mostrarProyectosIndividuales();

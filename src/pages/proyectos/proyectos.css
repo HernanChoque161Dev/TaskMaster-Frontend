@@ -1,0 +1,126 @@
+/* ==========================================================================
+   Estilos específicos de la página Proyectos
+   La estructura general (body, sidebar, main, .contenido-principal, .acciones-principales)
+   proviene de layout.css y responsive.css.
+   ========================================================================== */
+
+.barra-lateral {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+main {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.boton-tema-flotante {
+    position: fixed;
+    right: var(--espacio-6);
+    bottom: var(--espacio-6);
+    z-index: 20;
+    display: grid;
+    width: 3.5rem;
+    height: 3.5rem;
+    place-items: center;
+    border-radius: 50%;
+    background-color: var(--azul);
+    color: var(--color-texto-botones);
+    box-shadow: var(--sombra-modal);
+    cursor: pointer;
+    transition: background-color 0.15s ease, transform 0.15s ease;
+}
+
+.boton-tema-flotante:hover {
+    background-color: var(--celesteOscuro);
+    transform: translateY(-2px);
+}
+
+.boton-tema-flotante:focus-within {
+    outline: 3px solid var(--celesteMedio);
+    outline-offset: 3px;
+}
+
+.boton-tema-flotante input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+}
+
+.icono-tema::before {
+    content: "☾";
+    font-size: 1.75rem;
+    line-height: 1;
+}
+
+.boton-tema-flotante input:checked + .icono-tema::before {
+    content: "☀";
+}
+
+.proyecto-general {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espacio-3);
+}
+
+.proyecto-general h2 {
+    color: var(--azul);
+}
+
+.estado-vacio {
+    padding: var(--espacio-6);
+    text-align: center;
+    color: var(--azul);
+    border: 2px dashed var(--celesteMedio);
+    border-radius: var(--radio-tarjetas);
+}
+
+.dialogo {
+    border: none;
+    border-radius: var(--radio-tarjetas);
+    box-shadow: var(--sombra-modal);
+    padding: var(--espacio-6);
+    width: min(90vw, 28rem);
+    margin: auto;
+}
+
+.dialogo::backdrop {
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espacio-2);
+}
+
+.formulario h2 {
+    color: var(--azul);
+    margin-bottom: var(--espacio-2);
+}
+
+.formulario label {
+    font-size: var(--texto-secundario);
+    font-weight: var(--peso-medio);
+}
+
+.formulario input {
+    padding: var(--espacio-2) var(--espacio-3);
+    border: 1px solid var(--color-bordes);
+    border-radius: var(--radio-inputs);
+    font-family: inherit;
+    font-size: var(--texto-base);
+}
+
+.form-error {
+    color: var(--color-prioridad-alta);
+    font-size: var(--texto-secundario);
+    min-height: 1.25rem;
+}
+
+.dialogo-botones {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--espacio-3);
+}
