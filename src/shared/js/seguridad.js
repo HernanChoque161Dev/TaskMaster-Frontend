@@ -251,6 +251,19 @@ export function iniciarVigilanteSesion() {
 }
 
 /**
+ * Elimina las credenciales y datos de sesión del almacenamiento local (token y usuario).
+ */
+export function limpiarSesionLocal() {
+    try {
+        localStorage.removeItem(CLAVE_TOKEN);
+        localStorage.removeItem(CLAVE_USUARIO);
+        sessionStorage.clear();
+    } catch (e) {
+        console.warn('No se pudo acceder al almacenamiento durante la limpieza de sesión:', e);
+    }
+}
+
+/**
  * Expulsa al usuario forzosamente de la aplicación:
  * 1. Detiene cualquier temporizador activo del vigilante de sesión.
  * 2. Limpia las credenciales y datos de sesión en almacenamiento local.
@@ -260,14 +273,8 @@ export function iniciarVigilanteSesion() {
  */
 export function expulsarUsuario(mensaje = MENSAJE_SESION_CADUCADA) {
     detenerVigilanteSesion();
-
-    try {
-        localStorage.removeItem(CLAVE_TOKEN);
-        localStorage.removeItem(CLAVE_USUARIO);
-        guardarMensajeAuth(mensaje);
-    } catch (e) {
-        console.warn('No se pudo acceder al almacenamiento local durante la expulsión:', e);
-    }
+    limpiarSesionLocal();
+    guardarMensajeAuth(mensaje);
 
     const rutaLogin = resolverRutaLogin();
     // Evitar bucle si ya estamos en la página de login
@@ -337,6 +344,7 @@ if (typeof window !== 'undefined') {
         obtenerTiempoRestanteToken,
         guardarMensajeAuth,
         consumirMensajeAuth,
+        limpiarSesionLocal,
         expulsarUsuario,
         iniciarVigilanteSesion,
         detenerVigilanteSesion,

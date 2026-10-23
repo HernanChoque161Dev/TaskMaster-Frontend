@@ -216,7 +216,14 @@ export async function manejarRespuestaGoogle(response) {
     }
 }
 
-// Exponer la función de callback en el ámbito global para Google Identity Services
+// Exponer y enlazar el callback con el puente global de Google Identity Services
 if (typeof window !== 'undefined') {
+    window.procesarRespuestaGoogle = manejarRespuestaGoogle;
     window.manejarRespuestaGoogle = manejarRespuestaGoogle;
+
+    if (window._pendienteGoogleResponse) {
+        const respuestaPendiente = window._pendienteGoogleResponse;
+        delete window._pendienteGoogleResponse;
+        manejarRespuestaGoogle(respuestaPendiente);
+    }
 }
